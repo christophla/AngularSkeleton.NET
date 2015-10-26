@@ -1,0 +1,80 @@
+﻿<!-- skip: app.catalog.search -->
+
+
+<div class="page-search">
+    <ul class="breadcrumb breadcrumb-page">
+        <li><i class="fa fa-dashboard"></i><a data-ui-sref="app.dashboard">Dashboard</a></li>
+        <li class="active"><a href="#">Catalog</a></li>
+    </ul>
+
+    <div class="page-header">
+        <h1>
+            <i class="fa fa-search page-header-icon"></i>&nbsp;&nbsp;Search results 
+        </h1>
+    </div>
+
+    <div class="search-text">
+        <span ng-if="!submitted"><strong>{{ totalRecords }}</strong> results found</span>
+        <span ng-if="submitted"><strong>{{ totalRecords }}</strong> results found for: <span class="text-primary">{{ criteria }}</span></span>
+    </div>
+
+    <!-- TABS -->
+
+    <div class="search-tabs">
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#search-tabs-all" data-toggle="tab">All <span class="label label-primary">{{ totalRecords }}</span></a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="panel search-panel">
+
+        <!-- SEARCH FORM -->
+
+        <form class="search-form bg-primary">
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon no-background"><i class="fa fa-search"></i></span>
+                <input type="text" name="s" class="form-control" ng-model="criteria" placeholder="Type your search here...">
+                <span class="input-group-btn">
+                    <button class="btn" type="submit" ng-click="search()">Search</button>
+                    <button class="btn" ng-click="clear()">Clear</button>
+                </span>
+            </div>
+        </form>
+
+        <!-- SEARCH RESULTS -->
+
+        <div class="panel-body tab-content" cg-busy="loading">
+
+            <ul class="search-classic tab-pane fade in active" id="search-tabs-all">
+                <li data-ng-repeat="item in items">
+                    <a href="#" ng-click="view(item)" class="search-title">{{ item.name }}</a>
+                    <div class="search-content"> {{ item.description }}</div>
+                    <div class="search-tags">
+                        <span class="search-tags-text">Tags:</span>
+                        <a href="#" class="label label-success">Lorem</a>
+                        <a href="#" class="label label-success">Ipsum</a>
+                        <a href="#" class="label label-success">Dolor</a>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+
+        <!-- PAGING -->
+
+
+        <div class="panel-footer">
+            <pagination ng-model="currentPage"
+                        total-items="totalRecords"
+                        max-size="5"
+                        boundary-links="true">
+            </pagination>
+        </div>
+
+    </div>
+</div>
+
+<!-- end: app.catalog.search -->
+        

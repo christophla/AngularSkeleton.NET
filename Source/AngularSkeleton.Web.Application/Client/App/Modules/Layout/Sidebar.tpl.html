@@ -1,0 +1,43 @@
+﻿
+<!-- start: app.layout.sidebar -->
+
+<div id="main-menu">
+    <div id="main-menu-inner">
+
+        <!-- MENU TOP -->
+
+        <div class="menu-content top text-center" style="white-space: nowrap;">
+            <div class="text-bg form-group-margin" style="color: #fff">
+                <span class="text-slim">Welcome,</span> <span class="text-semibold">{{ firstname }}</span>
+            </div>
+            <div class="form-group-margin">
+                <img ng-src="{{ avataruri }}" alt="" class="rounded" style="width: 80px; height: 80px;">
+            </div>
+            <a ui-sref="app.profile" class="btn btn-xs btn-primary btn-outline dark">Profile</a>&nbsp;
+            <a ng-click="signout()" class="btn btn-xs btn-danger btn-outline dark"><i class="fa fa-power-off"></i> Log Out</a>
+        </div>
+
+        <!-- MENU -->
+
+        <ul class="navigation">
+            <li ui-sref-active="active"> <a ui-sref="app.dashboard"><i class="menu-icon fa fa-dashboard"></i><span class="mm-text">Dashboard</span></a> </li>
+            <li ui-sref-active="active"> <a ui-sref="app.catalog"><i class="menu-icon fa fa-sitemap"></i><span class="mm-text">Catalog</span></a> </li>
+            <li class="mm-dropdown mm-dropdown-root" ui-sref-active="open" ng-show="isAdmin">
+                <a href="" ui-sref="app.manage"><i class="menu-icon fa fa-cogs"></i><span class="mm-text">Manage</span></a>
+                <ul>
+                    <li ui-sref-active="active"> <a href="" tabindex="-1" ui-sref="app.manage.products"><span class="mm-text">Products</span></a> </li>
+                    <li ui-sref-active="active"> <a href="" tabindex="-1" ui-sref="app.manage.users"><span class="mm-text">Users</span></a> </li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- HELP LINK -->
+
+        <div class="menu-content animated fadeIn">
+            <a href="/api/rest/docs/index" target="_blank" class="btn btn-primary btn-block btn-outline dark">Help</a>
+        </div>
+
+    </div>
+</div>
+
+<!-- end: app.layout.sidebar -->

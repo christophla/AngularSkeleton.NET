@@ -1,0 +1,59 @@
+﻿
+<!-- skip: app.dashboard -->
+
+<ul class="breadcrumb breadcrumb-page">
+    <li><i class="fa fa-home"></i><a data-ui-sref="app.home">Home</a></li>
+    <li class="active"><a href="#">Welcome</a></li>
+</ul>
+
+<div class="page-header">
+    <h1 class="anim-slide-left anim-fade"> <i class="fa fa-dashboard page-header-icon"></i>&nbsp;&nbsp; Dashboard </h1>
+</div>
+
+<div class="row" ng-cloak>
+
+    <div class="col-sm-12">
+        <h4> Welcome, {{ fullName }}</h4>
+    </div>
+
+    <!-- LEFT COL -->
+
+    <div class="col-sm-6">
+
+        <!-- TOTAL PRODUCTS -->
+
+        <div class="stat-panel">
+            <div class="stat-cell bg-danger valign-middle">
+                <i class="fa fa-line-chart bg-icon"></i>
+                <span class="text-xlg"><strong>124</strong></span><br>
+                <span class="text-bg">Products</span><br>
+                <span class="text-sm">Total products in catalog</span>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- RIGHT COL -->
+
+    <div class="col-sm-6">
+
+        <!-- TIME CLOCK-->
+
+        <div class="stat-panel">
+            <div class="stat-row">
+                <div class="stat-cell bg-info no-padding text-center text-slg">
+                    <i class="fa fa-clock-o"></i>
+                </div>
+            </div>
+            <div class="stat-row">
+                <div class="stat-cell bordered no-border-t text-center text-lg">
+                    <strong>4:50</strong>
+                    <small><small>PM</small></small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- end: app.dashboard -->

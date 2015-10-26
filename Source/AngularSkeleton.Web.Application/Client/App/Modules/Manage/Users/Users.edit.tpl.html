@@ -1,0 +1,116 @@
+﻿
+<!-- start: app.manage.users.edit -->
+
+<ul class="breadcrumb breadcrumb-page">
+    <li><i class="fa fa-dashboard"></i><a data-ui-sref="app.dashboard">Dashboard</a></li>
+    <li><a data-ui-sref="app.manage">Manage</a></li>
+    <li><a data-ui-sref="app.manage.users">Users</a></li>
+    <li class="active"><a href="#">Edit User</a></li>
+</ul>
+
+<div class="page-header">
+    <h1 class="anim-slide-left anim-fade">
+        <i class="fa fa-user page-header-icon"></i>&nbsp;&nbsp;
+        <a data-ui-sref="app.manage.users" class="hidden-xs">Manage People</a> <i class="fa fa-angle-double-right hidden-xs"></i> Edit User
+    </h1>
+</div>
+
+<div class="row" ng-cloak>
+
+    <div class="col-sm-12" ng-show="user.archived">
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            The user is currently archived. <a href="" ng-click="reactivate()"> Re-enable</a>
+        </div>
+    </div>
+
+    <!-- LEFT COL -->
+
+    <div class="col-sm-8">
+        <form name="editUserForm" class="form-horizontal" role="form" data-ng-submit="save(editUserForm.$valid)" novalidate>
+            <div class="panel">
+
+                <div class="panel-body">
+
+                    <!-- USERNAME -->
+                    <div class="row form-group required">
+                        <label class="col-md-2 control-label" for="username">Login</label>
+                        <div class="col-md-9">
+                            <input id="username" name="username" class="form-control bold" type="text" data-ng-model="user.username" readonly/>
+                        </div>
+                    </div>
+
+                    <!-- FIRST NAME -->
+                    <div class="row form-group required" data-ng-class="{ 'has-error' : submitted && editUserForm.nameFirst.$invalid }">
+                        <label class="col-md-2 control-label" for="nameFirst">First Name</label>
+                        <div class="col-md-9">
+                            <input id="nameFirst" name="nameFirst" class="form-control bold" type="text" data-ng-model="user.nameFirst" required/>
+                            <div class="help-block">First name is required.</div>
+                        </div>
+                    </div>
+
+                    <!-- LAST NAME -->
+                    <div class="row form-group required" data-ng-class="{ 'has-error' : submitted && editUserForm.nameLast.$invalid }">
+                        <label class="col-md-2 control-label" for="nameLast">Last Name</label>
+                        <div class="col-md-9">
+                            <input id="nameLast" name="nameLast" class="form-control bold" type="text" data-ng-model="user.nameLast" required/>
+                            <div class="help-block">Last name is required.</div>
+                        </div>
+                    </div>
+
+                    <!-- EMAIL -->
+                    <div class="row form-group required" data-ng-class="{ 'has-error' : submitted && editUserForm.email.$invalid}">
+                        <label class="col-md-2 control-label" for="email">Email</label>
+                        <div class="col-md-9">
+                            <input id="email" name="email" class="form-control bold" type="email" data-ng-model="user.email" required/>
+                            <div class="help-block">Email is required.</div>
+                        </div>
+                    </div>
+
+                    <!-- PERMISSION -->
+                    <div class="row form-group">
+                        <label class="col-md-2 control-label" for="permission">Admin</label>
+                        <div class="col-md-9">
+                            <switch id="permission" name="permission" ng-model="user.isAdmin" class="green small"></switch>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="panel-footer">
+                    <div class="col-md-offset-2">
+                        <button class="btn btn-primary" data-ng-show="!user.archived" ladda="submitting">Update User</button>
+                        <a class="btn" data-ui-sref="app.manage.users.list">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- RIGHT COL -->
+
+    <div class="col-sm-4">
+        <div class="panel ">
+            <div class="panel-heading">
+                <span class="panel-title"> <i class="panel-title-icon fa fa-tasks"></i> Tasks </span>
+            </div>
+            <div class="list-group">
+                <a href="" class="list-group-item" data-confirm-button="remove(user)" data-message="Are you sure? This cannot be undone." data-yes="Yes" data-no="No" data-placement="bottom">
+                    <i class="list-group-icon fa fa-trash-o"></i>
+                    Delete User
+                </a>
+                <a href="" class="list-group-item" data-ng-show="!user.archived" data-confirm-button="archive(user)" data-message="Are you sure?" data-yes="Yes" data-no="No" data-placement="bottom">
+                    <i class="list-group-icon fa fa-moon-o"></i>
+                    Archive User
+                </a>
+                <a href="" class="list-group-item" data-ng-show="user.archived" data-confirm-button="reactivate(user)" data-message="Are you sure?" data-yes="Yes" data-no="No" data-placement="bottom">
+                    <i class="list-group-icon fa fa-sun-o"></i>
+                    Re-enable User
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- end: app.manage.users.edit -->

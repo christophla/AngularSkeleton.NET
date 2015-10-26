@@ -1,0 +1,72 @@
+﻿
+<!-- start: app.layout.navbar -->
+
+<div>
+    
+    <button type="button" data-ng-click="toggleSidebar()" id="main-menu-toggle">
+        <i class="navbar-icon fa fa-bars icon"></i><span class="hide-menu-text">HIDE MENU</span>
+    </button>
+
+    <div class="navbar-inner">
+
+        <!-- MAIN NAVBAR HEADER -->
+
+        <div class="navbar-header">
+
+            <!-- LOGO -->
+
+            <a ui-sref="app.home" class="navbar-brand">
+                <div>
+                    <img alt="AngularSkeleton" src="/client/content/images/pixel-admin/main-navbar-logo.png">
+                </div>
+                Angular Skeleton
+            </a>
+
+            <!-- MAIN NAVBAR TOGGLE -->
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-navbar-collapse">
+                <i class="navbar-icon fa fa-bars"></i>
+            </button>
+
+        </div>
+
+        <!-- TOP MENU -->
+
+        <div id="main-navbar-collapse" class="collapse navbar-collapse main-navbar-collapse">
+            <div>
+                <ul class="nav navbar-nav"></ul>
+                <div class="right clearfix">
+                    <ul class="nav navbar-nav pull-right right-navbar-nav">
+
+                        <!-- NOTIFICATIONS-->
+
+                        <li class="nav-icon-btn nav-icon-btn-danger dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown"> <span class="label">5</span> <i class="nav-icon fa fa-bullhorn"></i> <span class="small-screen-text">Notifications</span> </a>
+                        </li>
+
+                        <!-- MESSAGES-->
+
+                        <li class="nav-icon-btn nav-icon-btn-success dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown"> <span class="label">10</span> <i class="nav-icon fa fa-envelope"></i> <span class="small-screen-text">Income messages</span> </a>
+                        </li>
+
+                        <!-- PROFILE DROPDOWN -->
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle user-menu" data-toggle="dropdown"> <img ng-src="{{ avataruri }}" alt=""> <span>{{ username }} </span> </a>
+                            <ul class="dropdown-menu">
+                                <li><a ui-sref="app.settings.overview"><i class="dropdown-icon fa fa-user"></i>&nbsp;&nbsp;&nbsp;Profile</a></li>
+                                <li><a href="/api/rest/docs/index" target="_blank"><i class="dropdown-icon fa fa-user"></i>&nbsp;&nbsp;&nbsp;API</a></li>
+                                <li class="divider"></li>
+                                <li><a ng-click="signout()"><i class="dropdown-icon fa fa-power-off"></i>&nbsp;&nbsp;Log Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- end: app.layout.navbar -->

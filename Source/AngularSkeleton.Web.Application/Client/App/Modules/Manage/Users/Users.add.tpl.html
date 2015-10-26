@@ -1,0 +1,92 @@
+﻿
+<!-- skip: users.add -->
+
+<ul class="breadcrumb breadcrumb-page">
+    <li><i class="fa fa-dashboard"></i><a data-ui-sref="app.dashboard">Dashboard</a></li>
+    <li><a data-ui-sref="app.manage">Manage</a></li>
+    <li><a data-ui-sref="app.manage.users">Users</a></li>
+    <li class="active"><a>Add User</a></li>
+</ul>
+
+<div class="page-header">
+    <h1 class="anim-slide-left anim-fade">
+        <i class="fa fa-user page-header-icon"></i>&nbsp;&nbsp;
+        <a data-ui-sref="people.list" class="hidden-xs">Manage People</a> <i class="fa fa-angle-double-right hidden-xs"></i> Add User
+    </h1>
+</div>
+
+<div class="row" ng-cloak>
+    <div class="col-sm-12">
+        <form name="addUserForm" class="form-horizontal" role="form" data-ng-submit="save(addUserForm.$valid)" novalidate>
+            <div class="panel">
+
+                <div class="panel-body">
+
+                    <!-- USERNAME -->
+                    <div class="row form-group required" data-ng-class="{ 'has-error' : submitted && addUserForm.username.$invalid }">
+                        <label class="col-md-2 control-label" for="username">Username</label>
+                        <div class="col-md-9">
+                            <input id="username" name="username" class="form-control bold" type="text" data-ng-model="user.username" required/>
+                            <div class="help-block">Username is required.</div>
+                        </div>
+                    </div>
+
+                    <!-- PASSWORD -->
+                    <div class="row form-group required" data-ng-class="{ 'has-error' : submitted && addUserForm.password.$invalid }">
+                        <label class="col-md-2 control-label" for="username">Password</label>
+                        <div class="col-md-9">
+                            <input id="password" name="password" class="form-control bold" type="password" data-ng-model="user.password" required />
+                            <div class="help-block">Password is required.</div>
+                        </div>
+                    </div>
+
+                    <!-- FIRST NAME -->
+                    <div class="row form-group required" data-ng-class="{ 'has-error' : submitted && addUserForm.nameFirst.$invalid }">
+                        <label class="col-md-2 control-label" for="nameFirst">First Name</label>
+                        <div class="col-md-9">
+                            <input id="nameFirst" name="nameFirst" class="form-control bold" type="text" data-ng-model="user.nameFirst" required />
+                            <div class="help-block">First name is required.</div>
+                        </div>
+                    </div>
+
+                    <!-- LAST NAME -->
+                    <div class="row form-group required" data-ng-class="{ 'has-error' : submitted && addUserForm.nameLast.$invalid }">
+                        <label class="col-md-2 control-label" for="nameLast">Last Name</label>
+                        <div class="col-md-9">
+                            <input id="nameLast" name="nameLast" class="form-control bold" type="text" data-ng-model="user.nameLast" required />
+                            <div class="help-block">Last name is required.</div>
+                        </div>
+                    </div>
+
+                    <!-- EMAIL -->
+                    <div class="row form-group required" data-ng-class="{ 'has-error' : submitted && addUserForm.email.$invalid}">
+                        <label class="col-md-2 control-label" for="email">Email</label>
+                        <div class="col-md-9">
+                            <input id="email" name="email" class="form-control bold" type="email" data-ng-model="user.email" required />
+                            <div class="help-block">Email is required.</div>
+                        </div>
+                    </div>
+                    
+                    <!-- PERMISSION -->
+                    <div class="row form-group">
+                        <label class="col-md-2 control-label" for="permission">Administrator</label>
+                        <div class="col-md-9">
+                            <switch id="permission" name="permission" ng-model="user.sAdmin" class="green small"></switch>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="panel-footer">
+                    <div class="col-md-offset-2">
+                        <button class="btn btn-primary" data-ng-show="!user.archived" ladda="submitting">Add User</button>
+                        <a class="btn" data-ui-sref="app.manage.users.list">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<!-- end: app.manage.people.add -->

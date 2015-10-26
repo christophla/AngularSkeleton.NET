@@ -1,0 +1,82 @@
+﻿
+<!-- start: app.profile -->
+
+<ul class="breadcrumb breadcrumb-page">
+    <li><i class="fa fa-dashboard"></i><a data-ui-sref="app.dashboard">Dashboard</a></li>
+    <li class="active"><a href="#">Profile</a></li>
+</ul>
+
+<div class="page-header">
+    <h1 class="anim-slide-left anim-fade"> <i class="fa fa-user page-header-icon"></i>&nbsp;&nbsp; Edit Profile </h1>
+</div>
+
+<div class="row" ng-cloak>
+
+    <div class="col-sm-12">
+        <form name="editProfileForm" class="form-horizontal" role="form" data-ng-submit="save(editProfileForm.$valid)" novalidate>
+            <div class="panel">
+
+                <div class="panel-body">
+
+                    <!-- THEME -->
+                    <div class="row form-group">
+                        <label class="col-md-2 control-label" for="theme">Theme</label>
+                        <div class="col-md-9">
+                            <ui-select id="theme" name="theme" style="width: 100%" data-ng-model="profile.theme" ng-change="updateTheme()" required>
+                                <ui-select-match placeholder="Select theme">{{profile.theme}}</ui-select-match>
+                                <ui-select-choices repeat="theme in themes | filter: $select.search">
+                                    <div ng-bind-html="theme | highlight: $select.search"></div>
+                                </ui-select-choices>
+                            </ui-select>
+                        </div>
+                    </div>
+
+                    <!-- USERNAME -->
+                    <div class="row form-group required">
+                        <label class="col-md-2 control-label" for="username">Login</label>
+                        <div class="col-md-9">
+                            <input id="username" name="username" class="form-control bold" type="text" data-ng-model="profile.username" readonly/>
+                        </div>
+                    </div>
+
+                    <!-- FIRST NAME -->
+                    <div class="row form-group required" data-ng-class="{ 'has-error' : submitted && editProfileForm.nameFirst.$invalid }">
+                        <label class="col-md-2 control-label" for="nameFirst">First Name</label>
+                        <div class="col-md-9">
+                            <input id="nameFirst" name="nameFirst" class="form-control bold" type="text" data-ng-model="profile.nameFirst" required />
+                            <div class="help-block">First name is required.</div>
+                        </div>
+                    </div>
+
+                    <!-- LAST NAME -->
+                    <div class="row form-group required" data-ng-class="{ 'has-error' : submitted && editProfileForm.nameLast.$invalid }">
+                        <label class="col-md-2 control-label" for="nameLast">Last Name</label>
+                        <div class="col-md-9">
+                            <input id="nameLast" name="nameLast" class="form-control bold" type="text" data-ng-model="profile.nameLast" required />
+                            <div class="help-block">Last name is required.</div>
+                        </div>
+                    </div>
+
+                    <!-- EMAIL -->
+                    <div class="row form-group required" data-ng-class="{ 'has-error' : submitted && editProfileForm.email.$invalid}">
+                        <label class="col-md-2 control-label" for="email">Email</label>
+                        <div class="col-md-9">
+                            <input id="email" name="email" class="form-control bold" type="email" data-ng-model="profile.email" required />
+                            <div class="help-block">Email is required.</div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="panel-footer">
+                    <div class="col-md-offset-2">
+                        <button class="btn btn-primary" ladda="submitting">Update Profile</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<!-- end: app.profile -->

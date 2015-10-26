@@ -1,2 +1,2 @@
 # AngularSkeleton.NET
-AngularJS, WebAPI, SignalR skeleton application
+A skeleton angular application with webapi and oauth support.

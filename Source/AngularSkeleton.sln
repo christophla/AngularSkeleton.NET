@@ -1,0 +1,80 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularSkeleton.DataAccess", "AngularSkeleton.DataAccess\AngularSkeleton.DataAccess.csproj", "{2456914C-CADE-4FBD-AD7D-4291A38C9E21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularSkeleton.Common", "AngularSkeleton.Common\AngularSkeleton.Common.csproj", "{E458F4D0-B504-45D5-935B-3A3E5EE7DA30}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{F782ADB7-D76F-4EDB-8E21-59602F3FA640}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{E42A2F00-0014-44D8-A66D-A09FD92B3E18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularSkeleton.Web.Application", "AngularSkeleton.Web.Application\AngularSkeleton.Web.Application.csproj", "{89B93459-D028-46EC-8FDF-5062F5638689}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{3578B4C3-5B70-4D72-81AC-1557A5A41BC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularSkeleton.Domain", "AngularSkeleton.Domain\AngularSkeleton.Domain.csproj", "{D6C4C4C8-3121-41FC-9A8A-427D426DF7A9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularSkeleton.Service", "AngularSkeleton.Service\AngularSkeleton.Service.csproj", "{FB1DC466-8282-4F4A-8FED-672A64CA537B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularSkeleton.Service.Model", "AngularSkeleton.Service.Model\AngularSkeleton.Service.Model.csproj", "{36B05281-D965-4CE3-B09F-D56530A8C1A0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{ECED3B5C-5EEA-4468-B3BE-75A6FF5E228B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C4DA9697-5971-4863-9E65-7C5657BA8E1A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularSkeleton.Tests.Integration", "AngularSkeleton.Tests.Integration\AngularSkeleton.Tests.Integration.csproj", "{2A2E11C7-1939-47B7-AE28-857EFF5301D5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2456914C-CADE-4FBD-AD7D-4291A38C9E21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2456914C-CADE-4FBD-AD7D-4291A38C9E21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2456914C-CADE-4FBD-AD7D-4291A38C9E21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2456914C-CADE-4FBD-AD7D-4291A38C9E21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E458F4D0-B504-45D5-935B-3A3E5EE7DA30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E458F4D0-B504-45D5-935B-3A3E5EE7DA30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E458F4D0-B504-45D5-935B-3A3E5EE7DA30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E458F4D0-B504-45D5-935B-3A3E5EE7DA30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{89B93459-D028-46EC-8FDF-5062F5638689}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89B93459-D028-46EC-8FDF-5062F5638689}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89B93459-D028-46EC-8FDF-5062F5638689}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89B93459-D028-46EC-8FDF-5062F5638689}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6C4C4C8-3121-41FC-9A8A-427D426DF7A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6C4C4C8-3121-41FC-9A8A-427D426DF7A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6C4C4C8-3121-41FC-9A8A-427D426DF7A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6C4C4C8-3121-41FC-9A8A-427D426DF7A9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB1DC466-8282-4F4A-8FED-672A64CA537B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB1DC466-8282-4F4A-8FED-672A64CA537B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB1DC466-8282-4F4A-8FED-672A64CA537B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB1DC466-8282-4F4A-8FED-672A64CA537B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{36B05281-D965-4CE3-B09F-D56530A8C1A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{36B05281-D965-4CE3-B09F-D56530A8C1A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{36B05281-D965-4CE3-B09F-D56530A8C1A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{36B05281-D965-4CE3-B09F-D56530A8C1A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A2E11C7-1939-47B7-AE28-857EFF5301D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A2E11C7-1939-47B7-AE28-857EFF5301D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A2E11C7-1939-47B7-AE28-857EFF5301D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A2E11C7-1939-47B7-AE28-857EFF5301D5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{2456914C-CADE-4FBD-AD7D-4291A38C9E21} = {F782ADB7-D76F-4EDB-8E21-59602F3FA640}
+		{E458F4D0-B504-45D5-935B-3A3E5EE7DA30} = {F782ADB7-D76F-4EDB-8E21-59602F3FA640}
+		{89B93459-D028-46EC-8FDF-5062F5638689} = {E42A2F00-0014-44D8-A66D-A09FD92B3E18}
+		{D6C4C4C8-3121-41FC-9A8A-427D426DF7A9} = {F782ADB7-D76F-4EDB-8E21-59602F3FA640}
+		{FB1DC466-8282-4F4A-8FED-672A64CA537B} = {3578B4C3-5B70-4D72-81AC-1557A5A41BC4}
+		{36B05281-D965-4CE3-B09F-D56530A8C1A0} = {3578B4C3-5B70-4D72-81AC-1557A5A41BC4}
+		{2A2E11C7-1939-47B7-AE28-857EFF5301D5} = {C4DA9697-5971-4863-9E65-7C5657BA8E1A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.TransientFaultHandling.6.0.1304.0\lib\portable-net45+win+wp8;packages\EnterpriseLibrary.TransientFaultHandling.Data.6.0.1304.1\lib\NET45
+	EndGlobalSection
+EndGlobal

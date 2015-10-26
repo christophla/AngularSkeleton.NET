@@ -1,0 +1,32 @@
+﻿
+<!-- start: app.catalog.entry -->
+
+<div class="modal-header">
+    <a class="close" ng-click="hide()" data-dismiss="modal">×</a>
+    <h3>Product Details <small>{{currentDate | date}}</small> </h3>
+</div>
+
+<div class="modal-body">
+
+    <div class="panel panel-dark panel-body widget-profile widget-profile-centered">
+        <div class="panel-heading bg-pa-purple">
+            <div class="widget-profile-header">
+                <span>{{ entry.name }}</span>
+                <br>
+                {{ entry.quantityAvailable }} Available
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="widget-profile-text" style="padding: 0;"> {{ entry.description }} </div>
+            <br/>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal-footer">
+    <p class="pull-left text-error large"></p>
+    <button ng-click="hide()" class="btn" data-dismiss="modal"> Close </button>
+</div>
+
+<!-- end: app.catalog.entry -->

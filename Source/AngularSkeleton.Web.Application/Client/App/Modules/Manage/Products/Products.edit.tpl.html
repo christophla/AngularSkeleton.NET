@@ -1,0 +1,98 @@
+﻿<!-- start: users.add -->
+
+<ul class="breadcrumb breadcrumb-page">
+    <li><i class="fa fa-dashboard"></i><a data-ui-sref="app.dashboard">Dashboard</a></li>
+    <li><a data-ui-sref="app.manage">Manage</a></li>
+    <li><a data-ui-sref="app.manage.products">Products</a></li>
+    <li class="active"><a href="#">Edit Product</a></li>
+</ul>
+
+<div class="page-header">
+    <h1 class="anim-slide-left anim-fade">
+        <i class="fa fa-gear page-header-icon"></i>&nbsp;&nbsp;
+        <a data-ui-sref="products.list" class="hidden-xs">Manage Products</a> <i class="fa fa-angle-double-right hidden-xs"></i> Edit Product
+    </h1>
+</div>
+
+<div class="row" ng-cloak>
+
+    <div class="col-sm-12" ng-show="product.archived">
+        <div class="alert alert-warning alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            The product is currently archived. <a href="" ng-click="reactivate()"> Re-enable</a>
+        </div>
+    </div>
+
+    <!-- LEFT COL -->
+
+    <div class="col-sm-8">
+        <form name="editProductForm" class="form-horizontal" role="form" data-ng-submit="save(editProductForm.$valid)" novalidate>
+            <div class="panel">
+
+                <div class="panel-body">
+
+                    <!-- NAME -->
+                    <div class="row form-group required" data-ng-class="{ 'has-error' : submitted && editProductForm.name.$invalid }">
+                        <label class="col-md-2 control-label" for="name">Name</label>
+                        <div class="col-md-9">
+                            <input id="name" name="name" class="form-control bold" type="text" data-ng-model="product.name" required />
+                            <div class="help-block">Name is required.</div>
+                        </div>
+                    </div>
+
+                    <!-- DESCRIPTION -->
+                    <div class="row form-group required" data-ng-class="{ 'has-error' : submitted && editProductForm.description.$invalid }">
+                        <label class="col-md-2 control-label" for="description">Description</label>
+                        <div class="col-md-9">
+                            <textarea id="description" name="description" class="form-control bold" type="text" data-ng-model="product.description"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- QUANTITY AVAILABLE -->
+                    <div class="row form-group required" data-ng-class="{ 'has-error' : submitted && editProductForm.quantityAvailable.$invalid}">
+                        <label class="col-md-2 control-label" for="quantityAvailable">Quantity Available</label>
+                        <div class="col-md-9">
+                            <input id="quantityAvailable" name="quantityAvailable" class="form-control bold" type="number" data-ng-model="product.quantityAvailable" required />
+                            <div class="help-block">Quantity available is required and must be a number.</div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="panel-footer">
+                    <div class="col-md-offset-2">
+                        <button class="btn btn-primary" data-ng-show="!product.archived" ladda="submitting">Update Product</button>
+                        <a class="btn" data-ui-sref="app.manage.products.list">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- RIGHT COL -->
+
+    <div class="col-sm-4">
+        <div class="panel ">
+            <div class="panel-heading">
+                <span class="panel-title"> <i class="panel-title-icon fa fa-tasks"></i> Tasks </span>
+            </div>
+            <div class="list-group">
+                <a href="" class="list-group-item" data-confirm-button="remove(product)" data-message="Are you sure? This cannot be undone." data-yes="Yes" data-no="No" data-placement="bottom">
+                    <i class="list-group-icon fa fa-trash-o"></i>
+                    Delete Product
+                </a>
+                <a href="" class="list-group-item" data-ng-show="!user.archived" data-confirm-button="archive(product)" data-message="Are you sure?" data-yes="Yes" data-no="No" data-placement="bottom">
+                    <i class="list-group-icon fa fa-moon-o"></i>
+                    Archive Product
+                </a>
+                <a href="" class="list-group-item" data-ng-show="user.archived" data-confirm-button="reactivate(product)" data-message="Are you sure?" data-yes="Yes" data-no="No" data-placement="bottom">
+                    <i class="list-group-icon fa fa-sun-o"></i>
+                    Re-enable Product
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- end: app.manage.people.add -->

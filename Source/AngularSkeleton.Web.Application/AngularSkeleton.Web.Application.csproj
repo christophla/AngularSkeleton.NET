@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{89B93459-D028-46EC-8FDF-5062F5638689}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AngularSkeleton.Web.Application</RootNamespace>
+    <AssemblyName>AngularSkeleton.Web.Application</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <TypeScriptToolsVersion>1.6</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\AngularSkeleton.Web.Application.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\AngularSkeleton.Web.Application.xml</DocumentationFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Autofac, Version=3.5.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.3.5.0\lib\net40\Autofac.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.Owin, Version=3.1.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Owin.3.1.0\lib\net45\Autofac.Integration.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi, Version=3.4.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.3.4.0\lib\net45\Autofac.Integration.WebApi.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Autofac.Integration.WebApi.Owin, Version=3.3.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.WebApi2.Owin.3.3.0\lib\net45\Autofac.Integration.WebApi.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="AutoMapper, Version=4.0.4.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.0.4\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="CuttingEdge.Conditions, Version=1.2.0.11174, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\packages\CuttingEdge.Conditions.1.2.0.0\lib\NET35\CuttingEdge.Conditions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Cors, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Cors.3.0.1\lib\net45\Microsoft.Owin.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.3.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.1.2\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Swashbuckle.Core.5.2.2\lib\net40\Swashbuckle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Cors, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.0.0\lib\net45\System.Web.Cors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.Owin, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Client\App\Modules\Catalog\Catalog.tpl.html" />
+    <Content Include="Client\App\Modules\Catalog\Catalog.entry.tpl.html" />
+    <Content Include="Client\App\Modules\Dashboard\Dashboard.tpl.html" />
+    <Content Include="Client\App\Modules\Errors\AccessDenied.tpl.html" />
+    <Content Include="Client\App\Modules\Layout\Footer.tpl.html" />
+    <Content Include="Client\App\Modules\Layout\Navbar.tpl.html" />
+    <Content Include="Client\App\Modules\Layout\Sidebar.tpl.html" />
+    <Content Include="Client\App\Modules\Login\Login.tpl.html" />
+    <Content Include="Client\App\Modules\Manage\Products\Products.edit.tpl.html" />
+    <Content Include="Client\App\Modules\Manage\Products\Products.list.tpl.html" />
+    <Content Include="Client\App\Modules\Manage\Products\Products.add.tpl.html" />
+    <Content Include="Client\App\Modules\Manage\Users\Users.add.tpl.html" />
+    <Content Include="Client\App\Modules\Manage\Users\Users.list.tpl.html" />
+    <Content Include="Client\App\Modules\Manage\Users\Users.edit.tpl.html" />
+    <Content Include="Client\App\Modules\Profile\Profile.tpl.html" />
+    <Content Include="Client\Client.js" />
+    <Content Include="Client\Content\Fonts\font-awesome\fontawesome-webfont.svg" />
+    <Content Include="Client\Content\Images\assets\logo-big.png" />
+    <Content Include="Client\Content\Images\assets\signin-bg-1.jpg" />
+    <Content Include="Client\Content\Images\assets\signin-bg-2.jpg" />
+    <Content Include="Client\Content\Images\assets\signin-bg-3.jpg" />
+    <Content Include="Client\Content\Images\assets\signin-bg-4.jpg" />
+    <Content Include="Client\Content\Images\assets\signin-bg-5.jpg" />
+    <Content Include="Client\Content\Images\assets\signin-bg-6.jpg" />
+    <Content Include="Client\Content\Images\assets\signin-bg-7.jpg" />
+    <Content Include="Client\Content\Images\assets\signin-bg-8.jpg" />
+    <Content Include="Client\Content\Images\assets\signin-bg-9.jpg" />
+    <Content Include="Client\Content\Images\pixel-admin\avatar.png" />
+    <Content Include="Client\Content\Images\pixel-admin\blank.png" />
+    <Content Include="Client\Content\Images\pixel-admin\blur.svg" />
+    <Content Include="Client\Content\Images\pixel-admin\main-menu-bg.png" />
+    <Content Include="Client\Content\Images\pixel-admin\main-navbar-bg.png" />
+    <Content Include="Client\Content\Images\pixel-admin\main-navbar-logo.png" />
+    <Content Include="Client\Content\Images\plugins\bootstrap-editable\loading.gif" />
+    <Content Include="Client\Content\Images\plugins\jquery.minicolors.png" />
+    <Content Include="Client\Content\Images\themes\adminflare\body-bg.png" />
+    <Content Include="Client\Content\Images\themes\adminflare\ie-navbar-bg.png" />
+    <Content Include="Client\Content\Images\themes\adminflare\menu-bg.png" />
+    <Content Include="Client\Content\Images\themes\clean\body-bg.gif" />
+    <Content Include="Client\Content\Styles\angular-ui-switch.min.css" />
+    <Content Include="Client\Content\Styles\application.css" />
+    <Content Include="Client\Content\Styles\bootstrap.css" />
+    <Content Include="Client\Content\Styles\bootstrap.min.css" />
+    <Content Include="Client\Content\Styles\pages.css" />
+    <Content Include="Client\Content\Styles\pages.min.css" />
+    <Content Include="Client\Content\Styles\pixel-admin.css" />
+    <Content Include="Client\Content\Styles\pixel-admin.min.css" />
+    <Content Include="Client\Content\Styles\rtl.css" />
+    <Content Include="Client\Content\Styles\rtl.min.css" />
+    <Content Include="Client\Content\Styles\themes.css" />
+    <Content Include="Client\Content\Styles\themes.min.css" />
+    <Content Include="Client\Content\Styles\widgets.css" />
+    <Content Include="Client\Content\Styles\widgets.min.css" />
+    <Content Include="Client\Loader.js" />
+    <Content Include="Client\Vendor\angular-ladda.js" />
+    <Content Include="Client\Vendor\angular-ui-switch.js" />
+    <Content Include="Client\Vendor\anim-in-out.js" />
+    <Content Include="Client\Vendor\ngprogress.js" />
+    <Content Include="Favicon.ico" />
+    <Content Include="Index.html" />
+    <Content Include="Packages.config" />
+    <Content Include="Client\Content\Fonts\font-awesome\fontawesome-webfont.eot" />
+    <Content Include="Client\Content\Fonts\font-awesome\fontawesome-webfont.ttf" />
+    <Content Include="Client\Content\Fonts\font-awesome\fontawesome-webfont.woff" />
+    <Content Include="Client\Content\Fonts\font-awesome\FontAwesome.otf" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\ControllerBase.cs" />
+    <Compile Include="Controllers\Catalog\CatalogController.cs" />
+    <Compile Include="Controllers\Manage\ProductsController.cs" />
+    <Compile Include="Controllers\Manage\UsersController.cs" />
+    <Compile Include="Infrastructure\Attributes\CheckModelForNullAttribute.cs" />
+    <Compile Include="Infrastructure\Attributes\ExceptionHandling.cs" />
+    <Compile Include="Infrastructure\Attributes\ValidateModelAttribute.cs" />
+    <Compile Include="Infrastructure\Config\ApiRouteConfig.cs" />
+    <Compile Include="Infrastructure\Config\ContainerConfig.cs" />
+    <Compile Include="Infrastructure\Config\DocumentationConfig.cs" />
+    <Compile Include="Infrastructure\Config\FormattersConfig.cs" />
+    <Compile Include="Infrastructure\Config\MapperConfig.cs" />
+    <Compile Include="Infrastructure\Security\AuthorizationServerProvider.cs" />
+    <Compile Include="Infrastructure\Startup.cs" />
+    <Compile Include="Properties\VersionInfo.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AngularSkeleton.Common\AngularSkeleton.Common.csproj">
+      <Project>{e458f4d0-b504-45d5-935b-3a3e5ee7da30}</Project>
+      <Name>AngularSkeleton.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AngularSkeleton.DataAccess\AngularSkeleton.DataAccess.csproj">
+      <Project>{2456914c-cade-4fbd-ad7d-4291a38c9e21}</Project>
+      <Name>AngularSkeleton.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AngularSkeleton.Domain\AngularSkeleton.Domain.csproj">
+      <Project>{d6c4c4c8-3121-41fc-9a8a-427d426df7a9}</Project>
+      <Name>AngularSkeleton.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AngularSkeleton.Service.Model\AngularSkeleton.Service.Model.csproj">
+      <Project>{36b05281-d965-4ce3-b09f-d56530a8c1a0}</Project>
+      <Name>AngularSkeleton.Service.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AngularSkeleton.Service\AngularSkeleton.Service.csproj">
+      <Project>{fb1dc466-8282-4f4a-8fed-672a64ca537b}</Project>
+      <Name>AngularSkeleton.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Client\App\App.ts" />
+    <TypeScriptCompile Include="Client\App\Constants.ts" />
+    <TypeScriptCompile Include="Client\App\Modules\Catalog\Catalog.ts" />
+    <TypeScriptCompile Include="Client\App\Modules\Dashboard\Dashboard.ts" />
+    <TypeScriptCompile Include="Client\App\Modules\Errors\Errors.ts" />
+    <TypeScriptCompile Include="Client\App\Modules\Layout\Layout.ts" />
+    <TypeScriptCompile Include="Client\App\Modules\Login\Login.ts" />
+    <TypeScriptCompile Include="Client\App\Modules\Manage\Manage.ts" />
+    <TypeScriptCompile Include="Client\App\Modules\Manage\Products\Products.ts" />
+    <TypeScriptCompile Include="Client\App\Modules\Manage\Users\Users.ts" />
+    <TypeScriptCompile Include="Client\App\Modules\Profile\Profile.ts" />
+    <TypeScriptCompile Include="Client\App\Repositories\Authentication.ts" />
+    <TypeScriptCompile Include="Client\App\Repositories\Catalog.ts" />
+    <TypeScriptCompile Include="Client\App\Repositories\Products.ts" />
+    <TypeScriptCompile Include="Client\App\Repositories\Repositories.ts" />
+    <TypeScriptCompile Include="Client\App\Repositories\Users.ts" />
+    <TypeScriptCompile Include="Client\App\Services\Profile.ts" />
+    <TypeScriptCompile Include="Client\App\Services\Services.ts" />
+    <TypeScriptCompile Include="Client\Common\Analytics\Analytics.ts" />
+    <TypeScriptCompile Include="Client\Common\Directives\Forms.ts" />
+    <TypeScriptCompile Include="Client\Common\Filters\Filters.ts" />
+    <TypeScriptCompile Include="Client\Common\Security\Authorization.ts" />
+    <TypeScriptCompile Include="Client\Common\Security\Principal.ts" />
+    <TypeScriptCompile Include="Client\Common\Security\Security.ts" />
+    <TypeScriptCompile Include="Client\Common\Services\Events.ts" />
+    <TypeScriptCompile Include="Client\Common\Services\Logger.ts" />
+    <TypeScriptCompile Include="Client\Common\Services\Underscore.ts" />
+    <TypeScriptCompile Include="Client\Typings\Angular\angular-animate.d.ts" />
+    <TypeScriptCompile Include="Client\Typings\Angular\angular-cookies.d.ts" />
+    <TypeScriptCompile Include="Client\Typings\Angular\angular-mocks.d.ts" />
+    <TypeScriptCompile Include="Client\Typings\Angular\angular-resource.d.ts" />
+    <TypeScriptCompile Include="Client\Typings\Angular\angular-route.d.ts" />
+    <TypeScriptCompile Include="Client\Typings\Angular\angular-sanitize.d.ts" />
+    <TypeScriptCompile Include="Client\Typings\Angular\angular-ui-bootstrap.d.ts" />
+    <TypeScriptCompile Include="Client\Typings\Angular\angular-ui-router.d.ts" />
+    <TypeScriptCompile Include="Client\Typings\Angular\angular.d.ts" />
+    <TypeScriptCompile Include="Client\Typings\Angular\restangular.d.ts" />
+    <TypeScriptCompile Include="Client\Typings\JQuery\jquery.d.ts" />
+    <TypeScriptCompile Include="Client\Typings\Lab\lab.d.ts" />
+    <TypeScriptCompile Include="Client\Typings\Ladda\angular.ladda.d.ts" />
+    <TypeScriptCompile Include="Client\Typings\Ladda\ladda.d.ts" />
+    <TypeScriptCompile Include="Client\Typings\Moment\moment-node.d.ts" />
+    <TypeScriptCompile Include="Client\Typings\Moment\moment.d.ts" />
+    <TypeScriptCompile Include="Client\Typings\NgProgressLite\ngprogress-lite.d.ts" />
+    <TypeScriptCompile Include="Client\Typings\NgProgress\ngprogress.d.ts" />
+    <TypeScriptCompile Include="Client\Typings\Restangular\restangular.d.ts" />
+    <TypeScriptCompile Include="Client\Typings\Toastr\toastr.d.ts" />
+    <TypeScriptCompile Include="Client\Typings\Underscore\underscore.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>None</TypeScriptJSXEmit>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>None</TypeScriptModuleKind>
+    <TypeScriptRemoveComments>True</TypeScriptRemoveComments>
+    <TypeScriptOutFile>client\client.js</TypeScriptOutFile>
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54391</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:54391/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
