@@ -42,8 +42,8 @@
       <HintPath>..\packages\EntityFramework.Cache.1.0.0\lib\net45\EFCache.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="EFCache.Redis, Version=2015.7.27.1, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\EFCache.Redis.2015.7.27.1\lib\net45\EFCache.Redis.dll</HintPath>
+    <Reference Include="EFCache.Redis, Version=2015.10.11.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EFCache.Redis.2015.10.11.1\lib\net45\EFCache.Redis.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -63,11 +63,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.1.2\lib\net45\NLog.dll</HintPath>
+      <HintPath>..\packages\NLog.4.2.0\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="StackExchange.Redis, Version=1.0.316.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\StackExchange.Redis.1.0.450\lib\net45\StackExchange.Redis.dll</HintPath>
+      <HintPath>..\packages\StackExchange.Redis.1.0.481\lib\net45\StackExchange.Redis.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
