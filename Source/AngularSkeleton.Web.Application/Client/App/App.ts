@@ -13,11 +13,12 @@
 // Core Application Module 
 //
 
-var m = angular.module('app', [
+var m = angular.module('app', [ 
     'app.constants',
     'common.analytics',
     'common.filters',
     'common.forms',
+    'common.loading',
     'common.security',
     'app.repositories',
     'app.services',
@@ -129,6 +130,7 @@ m.run(['$rootScope', '$state', '$stateParams', '$http', 'security', 'services', 
         $rootScope.$on('$stateChangeSuccess', (event, toState, toParams, fromState, fromParams) => {
             $rootScope.progressbar.complete()
         })
+
 }]) 
 
 
@@ -136,17 +138,8 @@ m.run(['$rootScope', '$state', '$stateParams', '$http', 'security', 'services', 
 // Controller app.container
 //
 
-m.controller('app.container', ['services', (services: IServices) => {
-    services.logger.debug('Loading application container.')
-}])
-
-
-// ****************************************************************************
-// Controller app.body
-//
-
-m.controller('app.body', ['$scope', '$window', 'services', 'settings', ($scope, $window: ng.IWindowService, services: IServices, settings: ISystemSettings) => {
-    services.logger.debug('Loading controller app.body.')
+m.controller('app.container', ['$scope', '$window', 'services', 'settings', ($scope, $window: ng.IWindowService, services: IServices, settings: ISystemSettings) => {
+    services.logger.debug('Loading controller app.container.')
     
     $scope.minimized = false
     $scope.showcompact = false
@@ -158,9 +151,11 @@ m.controller('app.body', ['$scope', '$window', 'services', 'settings', ($scope, 
             $scope.showcompact = !$scope.showcompact
         }
     })
-
+    
     services.events.on('event:update-theme', () => {
+        services.logger.debug(`switching theme: ${settings.currentTheme}`)
         $scope.theme = `theme-${settings.currentTheme}`
     })
+    
 }]) 
 

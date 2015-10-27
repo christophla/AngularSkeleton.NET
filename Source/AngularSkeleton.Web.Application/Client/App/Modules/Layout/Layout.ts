@@ -49,23 +49,24 @@ m.controller('app.layout.navbar', ['$scope', '$state', 'security', 'services', (
 // Controller layout.sidebar 
 //
 
-m.controller('app.layout.sidebar', ['$scope', '$state', 'security', 'services', ($scope: any, $state: ng.ui.IState, security: ISecurity, services: IServices, settings: ISystemSettings) => {
+m.controller('app.layout.sidebar', ['$scope', '$state', 'security', 'services', 'settings',
+    ($scope: any, $state: ng.ui.IState, security: ISecurity, services: IServices, settings: ISystemSettings) => {
     services.logger.debug('Loading app.layout.sidebar controller')
 
     $scope.$state = $state
 
     services.profile.me().then(me => {
         $scope.avataruri = me.avatar
+        settings.currentTheme = me.theme
         $scope.firstname = me.nameFirst
         $scope.isAdmin = me.isAdmin
+        services.events.emit('event:update-theme')
     })
 
     $scope.signout = () => {
         security.principal.authenticate(null);
         services.state.go('app.login');
     }
-
-    services.logger.debug(`Current state is: ${$scope.$state.name}`)
 }])
 
 

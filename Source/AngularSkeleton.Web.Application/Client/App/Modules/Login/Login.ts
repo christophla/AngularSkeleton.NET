@@ -43,8 +43,8 @@ m.config(['$stateProvider', 'settings',
 // Controller app.login
 //
 
-m.controller('app.login', ['$scope', 'security', 'repositories', 'services',
-    ($scope, security: ISecurity, repositories: IRepositories, services: IServices) => {
+m.controller('app.login', ['$scope', 'security', 'repositories', 'services', 'settings',
+    ($scope, security: ISecurity, repositories: IRepositories, services: IServices, settings: ISystemSettings) => {
 
     services.logger.debug('Loading app.login controller.')
 
@@ -60,14 +60,16 @@ m.controller('app.login', ['$scope', 'security', 'repositories', 'services',
                 
                 services.logger.success(`Logged in as: ${$scope.auth.username}`)
                 services.logger.debug(`Using token: ${data.access_token}`)
-                security.principal.authenticate({ name: $scope.auth.username, token: data.access_token, roles: ['user'] })
+                security.principal.authenticate({ name: $scope.auth.username, token: data.access_token, roles: ['user'] }) // base role
 
-                // get roles
+                // get roles and profile configuration
 
                 services.profile.me().then((me: IUser) => {
                     var roles = (me.isAdmin) ? ['user', 'admin'] : ['user']
                     services.logger.debug(`Using roles: ${JSON.stringify(roles)}`)
                     security.principal.authenticate({ name: $scope.auth.username, token: data.access_token, roles: roles })
+                    settings.currentTheme = me.theme
+                    services.events.emit('event:update-theme')
                     services.state.go('app.dashboard', {})
                 })
 

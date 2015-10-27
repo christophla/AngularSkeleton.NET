@@ -77,7 +77,7 @@ m.controller('app.profile', ['$scope', 'profile', 'repositories', 'services', 's
             if (isValid) {
                 $scope.submitting = true
                 repositories.users.save($scope.profile).then(() => {
-                    services.logger.success('Updated profile')
+                    $scope.updateTheme()
                     $scope.submitted = false
                     $scope.submitting = false
                 }, response => {

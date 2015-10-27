@@ -29,14 +29,16 @@ interface IProfileService {
 // Profile
 //
 
-m.factory('profile', ['repositories', '$q', (repositories: IRepositories, $q) => {
+m.factory('profile', ['repositories', '$q', 'logger', (repositories: IRepositories, $q, logger: ILogger) => {
 
     var user : IUser = null
 
     function me(): angular.IPromise<IUser> {
         const deferred = $q.defer()
-        if (user == null) {
+        if (user === null) {
+            logger.debug('Retrieving profile')
             repositories.users.me().then((data) => {
+                logger.debug('profile loaded')
                 user = data
                 deferred.resolve(user)
             })

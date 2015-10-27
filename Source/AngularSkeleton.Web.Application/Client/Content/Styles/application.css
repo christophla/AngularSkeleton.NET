@@ -1,313 +1,88 @@
-﻿
-/* VALIDATION */
+﻿/* VALIDATION */
 
-.help-block {
-	display: none;
-}
+.help-block { display: none; }
 
-.has-error .help-block {
-	display: block;
-}
+.has-error .help-block { display: block; }
 
 /* BREADCRUMBS */
 
-.breadcrumb i {
-	padding-right: 4px;
-}
+.breadcrumb i { padding-right: 4px; }
 
 /* PROGRESSBAR */
 
 #ngProgress {
-	-moz-transition: all 0.5s ease-in-out;
-	-o-transition: all 0.5s ease-in-out;
-	/* Add CSS3 styles for transition smoothing */
-	-webkit-transition: all 0.5s ease-in-out;
-	background-color: #3399FF !important;
-	box-shadow: 0 0 10px 0; /* Inherits the font color */
-	color: #475466 !important;
-	height: 2px;
-	margin: 0;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    /* Add CSS3 styles for transition smoothing */
+    -webkit-transition: all 0.5s ease-in-out;
+    background-color: #3399FF !important;
+    box-shadow: 0 0 10px 0; /* Inherits the font color */
+    color: #475466 !important;
+    height: 2px;
+    margin: 0;
 
-	opacity: 0;
-	padding: 0;
-	transition: all 0.5s ease-in-out;
-	z-index: 99998;
+    opacity: 0;
+    padding: 0;
+    transition: all 0.5s ease-in-out;
+    z-index: 99998;
 }
 
 #ngProgress-container {
-	left: 0;
-	margin: 0;
-	padding: 0;
-	position: fixed;
-	right: 0;
-	top: 0;
-	z-index: 99999;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    right: 0;
+    top: 0;
+    z-index: 99999;
 }
 
-/* ANIMATIONS */
+/* LOADING */
 
-.anim-in-out.anim-in-setup.anim-fade, .anim-in-out.anim-in-setup .anim-fade { opacity: 0; }
+div.m-app-loading { position: fixed; }
 
-.anim-in-out.anim-in-setup.anim-slide-left, .anim-in-out.anim-in-setup .anim-slide-left {
-	-ms-transform: translateX(100%);
-	-webkit-transform: translateX(100%);
-	transform: translateX(100%);
+div.m-app-loading div.animated-container {
+    background-color: #333333;
+    bottom: 0px;
+    left: 0px;
+    opacity: 1.0;
+    position: fixed;
+    right: 0px;
+    top: 0px;
+    z-index: 999999;
 }
 
-.anim-in-out.anim-in-setup.anim-slide-right, .anim-in-out.anim-in-setup .anim-slide-right {
-	-ms-transform: translateX(-100%);
-	-webkit-transform: translateX(-100%);
-	transform: translateX(-100%);
+/* Used to initialize the ng-leave animation state. */
+
+div.m-app-loading div.animated-container.ng-leave {
+    -webkit-transition: all linear 200ms;
+    opacity: 1.0;
+    transition: all linear 200ms;
 }
 
-.anim-in-out.anim-in-setup.anim-slide-below, .anim-in-out.anim-in-setup .anim-slide-below {
-	-ms-transform: translateY(20px);
-	-webkit-transform: translateY(20px);
-	transform: translateY(20px);
+/* Used to set the end properties of the ng-leave animation state. */
+
+div.m-app-loading div.animated-container.ng-leave-active { opacity: 0; }
+
+div.m-app-loading div.messaging {
+    color: #FFFFFF;
+    font-family: monospace;
+    left: 0px;
+    margin-top: -37px;
+    position: absolute;
+    right: 0px;
+    text-align: center;
+    top: 50%;
 }
 
-.anim-in-out.anim-in-setup.anim-slide-below-fade, .anim-in-out.anim-in-setup .anim-slide-below-fade {
-	-ms-transform: translateY(20px);
-	-webkit-transform: translateY(20px);
-	opacity: 0;
-	transform: translateY(20px);
+div.m-app-loading h1 {
+    font-size: 26px;
+    line-height: 35px;
+    margin: 0px 0px 20px 0px;
 }
 
-.anim-in-out.anim-in-setup.anim-zoom-out, .anim-in-out.anim-in-setup .anim-zoom-out {
-	-ms-transform: scale(0.95);
-	-webkit-transform: scale(0.95);
-	transform: scale(0.95);
-}
-
-.anim-in-out.anim-in-setup.anim-zoom-in, .anim-in-out.anim-in-setup .anim-zoom-in {
-	-ms-transform: scale(1.025);
-	-webkit-transform: scale(1.025);
-	transform: scale(1.025);
-}
-
-.anim-in-out.anim-in-setup.anim-zoom-out-full, .anim-in-out.anim-in-setup .anim-zoom-out-full {
-	-ms-transform: scale(0);
-	-webkit-transform: scale(0);
-	transform: scale(0);
-}
-
-.anim-in-out.anim-in-setup.anim-zoom-in-full, .anim-in-out.anim-in-setup .anim-zoom-in-full {
-	-ms-transform: scale(10);
-	-webkit-transform: scale(10);
-	transform: scale(10);
-}
-
-.anim-in-out.anim-in.anim-fade, .anim-in-out.anim-in .anim-fade {
-	-webkit-transition: all 500ms;
-	opacity: 1;
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-in.anim-slide-left, .anim-in-out.anim-in .anim-slide-left {
-	-ms-transform: translateX(0);
-	-webkit-transform: translateX(0);
-	-webkit-transition: all 500ms;
-	transform: translateX(0);
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-in.anim-slide-right, .anim-in-out.anim-in .anim-slide-right {
-	-ms-transform: translateX(0);
-	-webkit-transform: translateX(0);
-	-webkit-transition: all 500ms;
-	transform: translateX(0);
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-in.anim-slide-below, .anim-in-out.anim-in .anim-slide-below {
-	-ms-transform: translateY(0);
-	-webkit-transform: translateY(0);
-	-webkit-transition: all 500ms;
-	transform: translateY(0);
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-in.anim-slide-below-fade, .anim-in-out.anim-in .anim-slide-below-fade {
-	-ms-transform: translateY(0);
-	-webkit-transform: translateY(0);
-	-webkit-transition: all 500ms;
-	opacity: 1;
-	transform: translateY(0);
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-in.anim-zoom-out, .anim-in-out.anim-in .anim-zoom-out {
-	-ms-transform: scale(1);
-	-webkit-transform: scale(1);
-	-webkit-transition: all 500ms;
-	transform: scale(1);
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-in.anim-zoom-in, .anim-in-out.anim-in .anim-zoom-in {
-	-ms-transform: scale(1);
-	-webkit-transform: scale(1);
-	-webkit-transition: all 500ms;
-	transform: scale(1);
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-in.anim-zoom-out-full, .anim-in-out.anim-in .anim-zoom-out-full {
-	-ms-transform: scale(1);
-	-webkit-transform: scale(1);
-	-webkit-transition: all 500ms;
-	transform: scale(1);
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-in.anim-zoom-in-full, .anim-in-out.anim-in .anim-zoom-in-full {
-	-ms-transform: scale(1);
-	-webkit-transform: scale(1);
-	-webkit-transition: all 500ms;
-	transform: scale(1);
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-out-setup.anim-fade, .anim-in-out.anim-out-setup .anim-fade {
-	-webkit-transition: all 500ms;
-	opacity: 1;
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-out-setup.anim-slide-left, .anim-in-out.anim-out-setup .anim-slide-left {
-	-ms-transform: translateX(0);
-	-webkit-transform: translateX(0);
-	-webkit-transition: all 500ms;
-	transform: translateX(0);
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-out-setup.anim-slide-right, .anim-in-out.anim-out-setup .anim-slide-right {
-	-ms-transform: translateX(0);
-	-webkit-transform: translateX(0);
-	-webkit-transition: all 500ms;
-	transform: translateX(0);
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-out-setup.anim-slide-below, .anim-in-out.anim-out-setup .anim-slide-below {
-	-ms-transform: translateY(0);
-	-webkit-transform: translateY(0);
-	-webkit-transition: all 500ms;
-	transform: translateY(0);
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-out-setup.anim-slide-below-fade, .anim-in-out.anim-out-setup .anim-slide-below-fade {
-	-ms-transform: translateY(0);
-	-webkit-transform: translateY(0);
-	-webkit-transition: all 500ms;
-	opacity: 1;
-	transform: translateY(0);
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-out-setup.anim-zoom-out, .anim-in-out.anim-out-setup .anim-zoom-out {
-	-ms-transform: scale(1);
-	-webkit-transform: scale(1);
-	-webkit-transition: all 500ms;
-	transform: scale(1);
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-out-setup.anim-zoom-in, .anim-in-out.anim-out-setup .anim-zoom-in {
-	-ms-transform: scale(1);
-	-webkit-transform: scale(1);
-	-webkit-transition: all 500ms;
-	transform: scale(1);
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-out-setup.anim-zoom-out-full, .anim-in-out.anim-out-setup .anim-zoom-out-full {
-	-ms-transform: scale(1);
-	-webkit-transform: scale(1);
-	-webkit-transition: all 500ms;
-	transform: scale(1);
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-out-setup.anim-zoom-in-full, .anim-in-out.anim-out-setup .anim-zoom-in-full {
-	-ms-transform: scale(1);
-	-webkit-transform: scale(1);
-	-webkit-transition: all 500ms;
-	transform: scale(1);
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-out.anim-swap, .anim-in-out.anim-out .anim-swap { display: none; }
-
-.anim-in-out.anim-out.anim-fade, .anim-in-out.anim-out .anim-fade {
-	-webkit-transition: all 500ms;
-	opacity: 0;
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-out.anim-slide-left, .anim-in-out.anim-out .anim-slide-left {
-	-ms-transform: translateX(-100%);
-	-webkit-transform: translateX(-100%);
-	-webkit-transition: all 500ms;
-	transform: translateX(-100%);
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-out.anim-slide-right, .anim-in-out.anim-out .anim-slide-right {
-	-ms-transform: translateX(100%);
-	-webkit-transform: translateX(100%);
-	-webkit-transition: all 500ms;
-	transform: translateX(100%);
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-out.anim-slide-below, .anim-in-out.anim-out .anim-slide-below {
-	-ms-transform: translateY(20px);
-	-webkit-transform: translateY(20px);
-	-webkit-transition: all 500ms;
-	transform: translateY(20px);
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-out.anim-slide-below-fade, .anim-in-out.anim-out .anim-slide-below-fade {
-	-ms-transform: translateY(20px);
-	-webkit-transform: translateY(20px);
-	-webkit-transition: all 500ms;
-	opacity: 0;
-	transform: translateY(20px);
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-out.anim-zoom-out, .anim-in-out.anim-out .anim-zoom-out {
-	-ms-transform: scale(0.95);
-	-webkit-transform: scale(0.95);
-	-webkit-transition: all 500ms;
-	transform: scale(0.95);
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-out.anim-zoom-in, .anim-in-out.anim-out .anim-zoom-in {
-	-ms-transform: scale(1.025);
-	-webkit-transform: scale(1.025);
-	-webkit-transition: all 500ms;
-	transform: scale(1.025);
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-out.anim-zoom-out-full, .anim-in-out.anim-out .anim-zoom-out-full {
-	-ms-transform: scale(0);
-	-webkit-transform: scale(0);
-	-webkit-transition: all 500ms;
-	transform: scale(0);
-	transition: all 500ms;
-}
-
-.anim-in-out.anim-out.anim-zoom-in-full, .anim-in-out.anim-out .anim-zoom-in-full {
-	-ms-transform: scale(10);
-	-webkit-transform: scale(10);
-	-webkit-transition: all 500ms;
-	transform: scale(10);
-	transition: all 500ms;
+div.m-app-loading p {
+    font-size: 18px;
+    line-height: 14px;
+    margin: 0px 0px 0px 0px;
 }

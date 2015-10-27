@@ -304,6 +304,7 @@
     <TypeScriptCompile Include="Client\App\Services\Services.ts" />
     <TypeScriptCompile Include="Client\Common\Analytics\Analytics.ts" />
     <TypeScriptCompile Include="Client\Common\Directives\Forms.ts" />
+    <TypeScriptCompile Include="Client\Common\Directives\Loading.ts" />
     <TypeScriptCompile Include="Client\Common\Filters\Filters.ts" />
     <TypeScriptCompile Include="Client\Common\Security\Authorization.ts" />
     <TypeScriptCompile Include="Client\Common\Security\Principal.ts" />
