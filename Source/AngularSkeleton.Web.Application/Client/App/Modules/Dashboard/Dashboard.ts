@@ -49,8 +49,10 @@ m.config(['$stateProvider', 'settings', ($stateProvider: ng.ui.IStateProvider, s
 interface IDashboardScope {
     fullName: string
     labels: Array<string>
+    popularCategories: Array<IDonutChartItem>
     series: Array<string>
-    data: Array<Array<number>>
+    salesByLocation: Array<IDonutChartItem>
+    salesByType: Array<IDonutChartItem>
 }
 
 m.controller('app.dashboard', ['$scope', 'profile', 'repositories', 'services',
@@ -62,9 +64,23 @@ m.controller('app.dashboard', ['$scope', 'profile', 'repositories', 'services',
 
         $scope.labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July']
         $scope.series = ['New', 'Sold']
-        $scope.data = [
-            [65, 59, 80, 81, 56, 55, 40],
-            [28, 48, 40, 19, 86, 27, 90]
+
+        $scope.popularCategories = [
+            { label: "Books", value: 30 },
+            { label: "Software", value: 20 },
+            { label: "Games", value: 15 },
+            { label: "Other", value: 15 }
+        ]
+
+        $scope.salesByLocation= [
+            { label: 'United States', value: 60 },
+            { label: 'Europe', value: 30 },
+            { label: 'Other', value: 10 }
+        ]
+
+        $scope.salesByType = [
+            { label: "Download Sales", value: 90987 },
+            { label: "In-Store Sales", value: 12988 }
         ]
     }
 ]) 

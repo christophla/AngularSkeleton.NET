@@ -70,13 +70,14 @@ m.controller('app.profile', ['$scope', 'profile', 'repositories', 'services', 's
             settings.currentTheme = profile.theme
             services.events.emit('event:update-theme')
         }
-
+         
         $scope.save = (isValid: boolean) => {
             $scope.submitted = true
 
             if (isValid) {
                 $scope.submitting = true
                 repositories.users.save($scope.profile).then(() => {
+                    services.logger.success('Updated profile')
                     $scope.updateTheme()
                     $scope.submitted = false
                     $scope.submitting = false

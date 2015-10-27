@@ -10,7 +10,7 @@
 
 
 // ****************************************************************************
-// Module app.forms
+// Module common.forms
 //
 
 var m = angular.module('common.forms', ['common.filters'])
@@ -39,6 +39,7 @@ m.directive('btnLoading', () => {
 		}
 	}
 })
+
 
 // ****************************************************************************
 // Confirm dialog inline

@@ -1,0 +1,30 @@
+﻿
+<!-- start: app.widgets.donut -->
+
+<div class="stat-panel text-center">
+
+    <!-- TITLE -->
+
+    <div class="stat-row">
+        <div class="stat-cell bg-dark-gray padding-sm text-xs text-semibold">
+            <i class="fa fa-cloud"></i>&nbsp;&nbsp;{{ ctrl.title }}
+        </div>
+    </div>
+    
+    <!-- CHART -->
+
+    <div class="stat-row">
+        <div class="stat-cell bordered no-border-t no-padding-hr">
+            <div donut-chart
+                 donut-data="ctrl.data"
+                 donut-colors='["#31C0BE","#c7254e","#98a0d3"]'
+                 donut-formatter="formatter" 
+                 style="height: 150px;">
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- end: app.widgets.donut -->
+ 

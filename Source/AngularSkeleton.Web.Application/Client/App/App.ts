@@ -17,8 +17,6 @@ var m = angular.module('app', [
     'app.constants',
     'common.analytics',
     'common.filters',
-    'common.forms',
-    'common.loading',
     'common.security',
     'app.repositories',
     'app.services',
@@ -29,6 +27,7 @@ var m = angular.module('app', [
     'app.dashboard',
     'app.manage',
     'app.profile',
+    'app.widgets',
     'angularMoment',
     'angular-ladda',
     'ngAnimate',
@@ -39,7 +38,6 @@ var m = angular.module('app', [
     'ui.router',
     'ui.select',
     'uiSwitch',
-    'chart.js',
     'angular.morris-chart',
     'cgBusy'
 ]) 

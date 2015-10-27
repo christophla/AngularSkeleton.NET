@@ -37,6 +37,7 @@ interface ISystemSettings {
     docsBaseUri: string
     moduleBaseUri: string
     themes: Array<string>
+    widgetsBaseUri: string
 }
 
 m.constant('settings', <ISystemSettings> {
@@ -49,6 +50,7 @@ m.constant('settings', <ISystemSettings> {
     debugEnabled: true,
     docsBaseUri: '/api/rest/docs/index',
     moduleBaseUri: window['skeleton_client_root'] + '/app/modules',
+    widgetsBaseUri: window['skeleton_client_root'] + '/app/widgets',
     themes: [
         'adminflare',
         'asphalt',
