@@ -39,6 +39,7 @@ var m = angular.module('app', [
     'ui.select',
     'uiSwitch',
     'chart.js',
+    'angular.morris-chart',
     'cgBusy'
 ]) 
  

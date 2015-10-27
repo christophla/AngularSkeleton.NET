@@ -33,6 +33,8 @@ $LAB
     .script('//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js')
     .script('//cdnjs.cloudflare.com/ajax/libs/angular-busy/4.1.3/angular-busy.min.js')
     .script('//cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js')
+    .script('//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.4/raphael-min.js')
+    .script('//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js')
     .script('//cdnjs.cloudflare.com/ajax/libs/angular-chart.js/0.8.5/angular-chart.js')
     .script('//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.13.3/ui-bootstrap-tpls.min.js')
     .script('//cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.12.1/select.min.js')
@@ -42,6 +44,7 @@ $LAB
     .script('//cdnjs.cloudflare.com/ajax/libs/Ladda/0.9.8/ladda.min.js').wait()
     .script(client_root + '/vendor/angular-ui-switch.js')
     .script(client_root + '/vendor/angular-ladda.js')
+    .script(client_root + '/vendor/angular-morris-chart.js')
     .script(client_root + '/vendor/ngprogress.js')
     .script(client_root + '/vendor/anim-in-out.js').wait()
     .script(client_root + '/client.js');

@@ -16,44 +16,160 @@
         <h4> Welcome, {{ fullName }}</h4>
     </div>
 
+
+
     <!-- LEFT COL -->
 
-    <div class="col-sm-6">
+    <div class="col-sm-12">
+
+        <div class="stat-panel">
+            <div class="stat-row">
+                <div class="stat-cell col-sm-4 padding-sm-hr bordered no-border-r valign-top">
+                    <h4 class="padding-sm no-padding-t padding-xs-hr"><i class="fa fa-cloud-upload text-primary"></i>&nbsp;&nbsp;Products</h4>
+
+                    <ul class="list-group no-margin">
+                        <li class="list-group-item no-border-hr padding-xs-hr no-bg no-border-radius">
+                            Added <span class="label label-pa-purple pull-right">34</span>
+                        </li>
+                        <li class="list-group-item no-border-hr padding-xs-hr no-bg">
+                            Sold <span class="label label-danger pull-right">128</span>
+                        </li>
+                        <li class="list-group-item no-border-hr no-border-b padding-xs-hr no-bg">
+                            Removed <span class="label label-success pull-right">12</span>
+                        </li>
+                    </ul>
+
+                </div> 
+                
+                <div class="stat-cell col-sm-8 bg-primary padding-sm valign-middle">
+                    <div id="hero-graph" class="graph" style="height: 230px;">
+                        <div line-chart
+                             line-data='[
+                                        { y: "2006", a: 100, b: 90 },
+                                        { y: "2007", a: 75,  b: 65 },
+                                        { y: "2008", a: 50,  b: 40 },
+                                        { y: "2009", a: 75,  b: 65 },
+                                        { y: "2010", a: 50,  b: 40 },
+                                        { y: "2011", a: 75,  b: 65 },
+                                        { y: "2012", a: 100, b: 90 }
+                                    ]'
+                             line-xkey='y'
+                             line-ykeys='["a", "b"]'
+                             line-labels='["Serie A", "Serie B"]'
+                             line-colors='["#31C0BE", "#c7254e"]' style="height:230px">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- TOTAL PRODUCTS -->
 
-        <div class="stat-panel">
+        <!--<div class="stat-panel">
+
+            <div class="stat-row">
+                <div class="stat-cell bg-danger no-padding text-center text-lg">
+                    <i class="fa fa-clock-o"></i> Product Sales
+                </div>
+            </div>
+
             <div class="stat-cell bg-danger valign-middle">
-                <i class="fa fa-line-chart bg-icon"></i>
-                <span class="text-xlg"><strong>124</strong></span><br>
-                <span class="text-bg">Products</span><br>
-                <span class="text-sm">Total products in catalog</span>
+                <span class="text-bg">
+                    <canvas id="line"
+                            class="chart chart-line"
+                            chart-data="data"
+                            chart-labels="labels"
+                            chart-legend="true"
+                            chart-series="series">
+                    </canvas> 
+                </span>
             </div>
-        </div>
+
+            <div class="stat-row">
+            </div>
+
+        </div>-->
 
     </div>
 
-    <!-- RIGHT COL -->
 
-    <div class="col-sm-6">
-
-        <!-- TIME CLOCK-->
-
-        <div class="stat-panel">
+    <div class="col-xs-4">
+        <div class="stat-panel text-center">
             <div class="stat-row">
-                <div class="stat-cell bg-info no-padding text-center text-slg">
-                    <i class="fa fa-clock-o"></i>
+
+                <div class="stat-cell bg-dark-gray padding-sm text-xs text-semibold">
+                    <i class="fa fa-cloud"></i>&nbsp;&nbsp;Sales by Type
                 </div>
             </div>
             <div class="stat-row">
-                <div class="stat-cell bordered no-border-t text-center text-lg">
-                    <strong>4:50</strong>
-                    <small><small>PM</small></small>
+
+                <div class="stat-cell bordered no-border-t no-padding-hr">
+                    <div donut-chart
+                         donut-data='[
+                                {label: "Download Sales", value: 90987},
+                                {label: "In-Store Sales",value: 12988}
+                            ]'
+                         donut-colors='["#31C0BE","#c7254e","#98a0d3"]'
+                         donut-formatter='"currency"' style="height: 150px;">
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
+
+    <div class="col-xs-4">
+        <div class="stat-panel text-center">
+            <div class="stat-row">
+
+                <div class="stat-cell bg-dark-gray padding-sm text-xs text-semibold">
+                    <i class="fa fa-cloud"></i>&nbsp;&nbsp;Sales by Location
+                </div>
+            </div>
+            <div class="stat-row">
+
+                <div class="stat-cell bordered no-border-t no-padding-hr">
+                    <div donut-chart
+                         donut-data='[
+                                {label: "United States", value: 60},
+                                {label: "Europe",value: 20},
+                                {label: "Asia",value: 10},
+                                {label: "Africa",value: 5},
+                                {label: "Other",value: 5}
+                            ]'
+                         donut-colors='["#31C0BE","#c7254e","#98a0d3"]'
+                         donut-formatter='"percent"' style="height: 150px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-4">
+        <div class="stat-panel text-center">
+            <div class="stat-row">
+                
+                <div class="stat-cell bg-dark-gray padding-sm text-xs text-semibold">
+                    <i class="fa fa-cloud"></i>&nbsp;&nbsp;Popular Categories
+                </div>
+            </div> 
+            <div class="stat-row">
+                
+                <div class="stat-cell bordered no-border-t no-padding-hr">
+                    <div donut-chart
+                         donut-data='[
+                                {label: "Books", value: 30},
+                                {label: "Software",value: 20},
+                                {label: "Games",value: 15},
+                                {label: "Other",value: 15}
+                            ]'
+                         donut-colors='["#31C0BE","#c7254e","#98a0d3"]'
+                         donut-formatter='"percent"' style="height: 150px;">
+                    </div>
+                </div>
+            </div> 
+        </div> 
+    </div>
+
 </div>
 
 <!-- end: app.dashboard -->

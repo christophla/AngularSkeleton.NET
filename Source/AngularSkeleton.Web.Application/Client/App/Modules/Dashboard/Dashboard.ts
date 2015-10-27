@@ -48,6 +48,9 @@ m.config(['$stateProvider', 'settings', ($stateProvider: ng.ui.IStateProvider, s
 
 interface IDashboardScope {
     fullName: string
+    labels: Array<string>
+    series: Array<string>
+    data: Array<Array<number>>
 }
 
 m.controller('app.dashboard', ['$scope', 'profile', 'repositories', 'services',
@@ -56,5 +59,12 @@ m.controller('app.dashboard', ['$scope', 'profile', 'repositories', 'services',
         services.logger.debug('Loaded controller app.dashboard')
         
         $scope.fullName = profile.fullName()
+
+        $scope.labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July']
+        $scope.series = ['New', 'Sold']
+        $scope.data = [
+            [65, 59, 80, 81, 56, 55, 40],
+            [28, 48, 40, 19, 86, 27, 90]
+        ]
     }
 ]) 

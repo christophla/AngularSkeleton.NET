@@ -222,6 +222,7 @@
     <Content Include="Client\Content\Styles\widgets.min.css" />
     <Content Include="Client\Loader.js" />
     <Content Include="Client\Vendor\angular-ladda.js" />
+    <Content Include="Client\Vendor\angular-morris-chart.js" />
     <Content Include="Client\Vendor\angular-ui-switch.js" />
     <Content Include="Client\Vendor\anim-in-out.js" />
     <Content Include="Client\Vendor\ngprogress.js" />
