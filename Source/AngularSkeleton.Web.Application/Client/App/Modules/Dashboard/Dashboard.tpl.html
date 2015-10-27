@@ -19,63 +19,25 @@
     <!-- SALES GRAPH -->
 
     <div class="col-sm-12">
-
-        <div class="stat-panel">
-            <div class="stat-row">
-                <div class="stat-cell col-sm-4 padding-sm-hr bordered no-border-r valign-top">
-                    <h4 class="padding-sm no-padding-t padding-xs-hr"><i class="fa fa-cloud-upload text-primary"></i>&nbsp;&nbsp;Products</h4>
-
-                    <ul class="list-group no-margin">
-                        <li class="list-group-item no-border-hr padding-xs-hr no-bg">
-                            Sold Online <span class="label label-danger pull-right">128</span>
-                        </li>
-                        <li class="list-group-item no-border-hr no-border-b padding-xs-hr no-bg">
-                            Sold In-Stores <span class="label label-success pull-right">12</span>
-                        </li>
-                    </ul>
-
-                </div> 
-                
-                <div class="stat-cell col-sm-8 bg-primary padding-sm valign-middle">
-                    <div id="hero-graph" class="graph" style="height: 230px;">
-                        <div line-chart
-                             line-data='[
-                                        { y: "2006", a: 100, b: 90 },
-                                        { y: "2007", a: 75,  b: 65 },
-                                        { y: "2008", a: 50,  b: 40 },
-                                        { y: "2009", a: 75,  b: 65 },
-                                        { y: "2010", a: 50,  b: 40 },
-                                        { y: "2011", a: 75,  b: 65 },
-                                        { y: "2012", a: 100, b: 90 }
-                                    ]'
-                             line-xkey='y'
-                             line-ykeys='["a", "b"]'
-                             line-labels='["Serie A", "Serie B"]'
-                             line-colors='["#31C0BE", "#c7254e"]' style="height:230px">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        <graph-widget title="Sales by Year" data="graphdata"/>
     </div>
 
     <!-- SALES BY TYPE -->
 
     <div class="col-xs-4">
-        <donut-widget title="Sales by Type" data="salesByType" formatter="currency"></donut-widget>
+        <donut-chart-widget title="Sales by Type" data="salesByType" formatter="currency"/>
     </div>
 
     <!-- SALES BY LOCATION -->
 
     <div class="col-xs-4">
-        <donut-widget title="Sales by Location" data="salesByLocation" formatter="percent"></donut-widget>
+        <donut-chart-widget title="Sales by Location" data="salesByLocation" formatter="percent"/>
     </div>
 
     <!-- POPULAR CATEGORIES -->
 
     <div class="col-xs-4">
-        <donut-widget title="Popular Categories" data="popularCategories" formatter="percent"></donut-widget>
+        <donut-chart-widget title="Popular Categories" data="popularCategories" formatter="percent"/>
     </div>
 
 </div>

@@ -167,7 +167,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Client\App\Widgets\Templates\Donut.widget.html" />
+    <Content Include="Client\App\Widgets\Templates\DonutChart.widget.html" />
     <Content Include="Client\App\Modules\Catalog\Catalog.tpl.html" />
     <Content Include="Client\App\Modules\Catalog\Catalog.entry.tpl.html" />
     <Content Include="Client\App\Modules\Dashboard\Dashboard.tpl.html" />
@@ -183,6 +183,7 @@
     <Content Include="Client\App\Modules\Manage\Users\Users.list.tpl.html" />
     <Content Include="Client\App\Modules\Manage\Users\Users.edit.tpl.html" />
     <Content Include="Client\App\Modules\Profile\Profile.tpl.html" />
+    <Content Include="Client\App\Widgets\Templates\Graph.widget.html" />
     <Content Include="Client\Client.js" />
     <Content Include="Client\Content\Fonts\font-awesome\fontawesome-webfont.svg" />
     <Content Include="Client\Content\Images\assets\logo-big.png" />

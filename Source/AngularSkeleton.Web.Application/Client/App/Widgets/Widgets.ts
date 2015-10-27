@@ -17,7 +17,7 @@ var m = angular.module('app.widgets', [])
 
 
 // ****************************************************************************
-// Donut chart
+// Donut chart widget
 //
 
 interface IDonutChartItem {
@@ -25,23 +25,38 @@ interface IDonutChartItem {
     value: number
 }
 
-enum DonutChartFormatterType {
-    Currency,
-    Percent
-}
-
-m.directive('donutWidget', ['settings', (settings: ISystemSettings) => {
+m.directive('donutChartWidget', ['settings', (settings: ISystemSettings) => {
     
     return {
-        restrict: 'EA', //E = element, A = attribute, C = class, M = comment         
-        templateUrl: `${settings.widgetsBaseUri}/templates/donut.widget.html`,
-        controller: () => {}, 
-        controllerAs: 'ctrl',
         bindToController: {
             data: '=',
             formatter: '@',
             title: '@'
+        },     
+        controller: () => {}, 
+        controllerAs: 'ctrl',
+        restrict: 'EA',    
+        scope: { },
+        templateUrl: `${settings.widgetsBaseUri}/templates/donutchart.widget.html`
+    }
+}])
+
+
+// ****************************************************************************
+// Graph widget
+//
+ 
+m.directive('graphWidget', ['settings', (settings: ISystemSettings) => {
+
+    return { 
+        bindToController: {
+            data: '=',
+            title: '@'
         },
-        scope: {}
+        controller: () => { },
+        controllerAs: 'ctrl',
+        restrict: 'EA',
+        scope: {},
+        templateUrl: `${settings.widgetsBaseUri}/templates/graph.widget.html`
     }
 }])
