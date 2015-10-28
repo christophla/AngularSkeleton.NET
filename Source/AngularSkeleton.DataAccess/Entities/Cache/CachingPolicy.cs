@@ -19,8 +19,8 @@ namespace AngularSkeleton.DataAccess.Entities.Cache
     {
         protected override void GetExpirationTimeout(ReadOnlyCollection<EntitySetBase> affectedEntitySets, out TimeSpan slidingExpiration, out DateTimeOffset absoluteExpiration)
         {
-            slidingExpiration = TimeSpan.FromMinutes(5);
-            absoluteExpiration = DateTimeOffset.Now.AddMinutes(10);
+            slidingExpiration = TimeSpan.FromMinutes(Configuration.Cache.SlidingExpiration);
+            absoluteExpiration = DateTimeOffset.Now.AddMinutes(Configuration.Cache.AbsoluteExpirationMinutes);
         }
     }
 }

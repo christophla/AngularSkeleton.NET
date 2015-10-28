@@ -21,6 +21,8 @@ namespace AngularSkeleton.DataAccess
     {
         private const string CacheEnabledKey = "SkeletonApp.DataAccess.Cache.Enabled";
         private const string CacheModeKey = "SkeletonApp.DataAccess.Cache.Mode";
+        private const string CacheModeSilidingAbsoluteMinutesKey = "SkeletonApp.DataAccess.Cache.AbsoluteMinutes";
+        private const string CacheModeSilidingExpirationKey = "SkeletonApp.DataAccess.Cache.Expiration";
         private const string CacheRedisConnectionStringKey = "SkeletonApp.DataAccess.Cache.Redis.ConnectionString";
         private const string DatabasePrefixKey = "SkeletonApp.DataAccess.Database.Prefix";
         private const string DatabaseSchemaKey = "SkeletonApp.DataAccess.Database.Schema";
@@ -31,6 +33,37 @@ namespace AngularSkeleton.DataAccess
         {
             var factory = new ConfigurationStoreFactory();
             _configurationStore = factory.GetStore();
+        }
+
+        public static class Cache
+        {
+            public static int AbsoluteExpirationMinutes
+            {
+                get { return _configurationStore.GetSetting(CacheModeSilidingAbsoluteMinutesKey, 10); }
+            }
+
+            public static bool Enabled
+            {
+                get { return _configurationStore.GetSetting(CacheEnabledKey, false); }
+            }
+
+            public static CacheMode Mode
+            {
+                get { return _configurationStore.GetSetting(CacheModeKey, CacheMode.InMemory); }
+            }
+
+            public static int SlidingExpiration
+            {
+                get { return _configurationStore.GetSetting(CacheModeSilidingExpirationKey, 5); }
+            }
+
+            public static class Redis
+            {
+                public static string ConnectionSting
+                {
+                    get { return _configurationStore.GetSetting(CacheRedisConnectionStringKey, string.Empty); }
+                }
+            }
         }
 
         public static class Database
@@ -48,27 +81,6 @@ namespace AngularSkeleton.DataAccess
             public static string Schema
             {
                 get { return _configurationStore.GetSetting(DatabaseSchemaKey, Constants.DataAccess.Schema); }
-            }
-        }
-
-        public static class Cache
-        {
-            public static bool Enabled
-            {
-                get { return _configurationStore.GetSetting(CacheEnabledKey, false); }
-            }
-
-            public static CacheMode Mode
-            {
-                get { return _configurationStore.GetSetting(CacheModeKey, CacheMode.InMemory); }
-            }
-
-            public static class Redis
-            {
-                public static string ConnectionSting
-                {
-                    get { return _configurationStore.GetSetting(CacheRedisConnectionStringKey, string.Empty); }
-                }
             }
         }
     }
