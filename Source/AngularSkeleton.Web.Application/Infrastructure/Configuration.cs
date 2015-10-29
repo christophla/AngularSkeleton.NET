@@ -8,16 +8,19 @@
 // THE SOFTWARE.
 //=============================================================================
 
+using System;
 using AngularSkeleton.Common.Configuration;
 
-namespace AngularSkeleton.Domain
+namespace AngularSkeleton.Web.Application.Infrastructure
 {
     /// <summary>
-    ///     Configuration for the domain layer.
+    ///     Configuration for the web application.
     /// </summary>
     internal sealed class Configuration
     {
-        private const string GravatarUrlKey = "SkeletonApp.Gravatr.Url";
+        private const string OAuthAccessTokenExpireTimeSpanKey = "SkeletonApp.Web.OAuth.AccessTokenExpireTimeSpan";
+        private const string OAuthAllowInsecureHttpKey = "SkeletonApp.Web.OAuth.AllowInsecureHttp";
+
         private static readonly IConfigurationStore _configurationStore;
 
         static Configuration()
@@ -26,11 +29,16 @@ namespace AngularSkeleton.Domain
             _configurationStore = factory.GetStore();
         }
 
-        public static class Gravatar
+        public static class AccessToken
         {
-            public static string Url
+            public static bool AllowInsecureHttp
             {
-                get { return _configurationStore.GetSetting(GravatarUrlKey, "http://www.gravatar.com/avatar/{0}?d=mm").TrimEnd('/'); }
+                get { return _configurationStore.GetSetting(OAuthAllowInsecureHttpKey, false); }
+            }
+
+            public static TimeSpan ExpireTimeSpan
+            {
+                get { return _configurationStore.GetSetting(OAuthAccessTokenExpireTimeSpanKey, TimeSpan.FromDays(365)); }
             }
         }
     }

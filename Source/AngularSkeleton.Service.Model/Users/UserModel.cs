@@ -82,6 +82,6 @@ namespace AngularSkeleton.Service.Model.Users
         ///     The user username
         /// </summary>
         [DataMember]
-        public string Username { get; internal set; }
+        public string Username { get; set; }
     }
 }

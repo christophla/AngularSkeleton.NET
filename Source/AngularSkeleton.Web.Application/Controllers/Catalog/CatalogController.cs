@@ -15,7 +15,7 @@ namespace AngularSkeleton.Web.Application.Controllers.Catalog
     /// <summary>
     ///     Controller for accessing the catalog
     /// </summary>
-    [RoutePrefix(Constants.Api.Version.RestV1CatalogRoutePrefix)]
+    [RoutePrefix(Constants.Api.V1.CatalogRoutePrefix)]
     public class CatalogController : ControllerBase
     {
         private const string RetrieveCatalogEntryRoute = "GetEntryById";

@@ -22,6 +22,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularSkeleton.Service.Model", "AngularSkeleton.Service.Model\AngularSkeleton.Service.Model.csproj", "{36B05281-D965-4CE3-B09F-D56530A8C1A0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build", "Build", "{ECED3B5C-5EEA-4468-B3BE-75A6FF5E228B}"
+	ProjectSection(SolutionItems) = preProject
+		..\Build.bat = ..\Build.bat
+		..\Build.proj = ..\Build.proj
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{C4DA9697-5971-4863-9E65-7C5657BA8E1A}"
 EndProject

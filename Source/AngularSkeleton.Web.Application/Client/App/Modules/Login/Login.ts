@@ -51,10 +51,10 @@ m.controller('app.login', ['$scope', 'security', 'repositories', 'services', 'se
     $scope.auth = {}
 
     $scope.authenticate = (isValid: boolean) => {
+        $scope.submitted = true // spinner
         
         if (isValid) {
-
-            $scope.submitted = true // spinner
+            $scope.submitting = true
              
             repositories.authentication.authenticate($scope.auth.username, $scope.auth.password).then((data: IAuthenticationToken) => {
                 
@@ -73,8 +73,8 @@ m.controller('app.login', ['$scope', 'security', 'repositories', 'services', 'se
                     services.state.go('app.dashboard', {})
                 })
 
-            }, response => {
-                services.logger.error('An error occurred authenticating', response.data)
+            }, error => {
+                services.logger.error('An error occurred authenticating', error.data)
                 $scope.submitted = false
                 $scope.submitting = false
             })

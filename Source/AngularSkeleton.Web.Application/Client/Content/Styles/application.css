@@ -86,3 +86,20 @@ div.m-app-loading p {
     line-height: 14px;
     margin: 0px 0px 0px 0px;
 }
+
+/* GRAVATAR IMAGE LIST */
+.user-gravatar-sm {
+    border-radius: 25px;
+    display: inline-block;
+    height: 20px;
+    margin: -2px 0px 0px;
+    width: 20px;
+}
+
+.user-gravatar-md {
+    border-radius: 40px;
+    display: inline-block;
+    height: 35px;
+    margin: -2px 0px 0px;
+    width: 35px;
+}

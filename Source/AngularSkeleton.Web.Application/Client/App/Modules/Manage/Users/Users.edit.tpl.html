@@ -10,7 +10,8 @@
 
 <div class="page-header">
     <h1 class="anim-slide-left anim-fade">
-        <i class="fa fa-user page-header-icon"></i>&nbsp;&nbsp;
+        <img class="user-gravatar-md" ng-if="user.avatar.length > 0" ng-src="{{ user.avatar }}" alt="" />
+        <i class="fa fa-user page-header-icon" ng-if="user.avatar.length == 0"></i>&nbsp;&nbsp;
         <a data-ui-sref="app.manage.users" class="hidden-xs">Manage People</a> <i class="fa fa-angle-double-right hidden-xs"></i> Edit User
     </h1>
 </div>

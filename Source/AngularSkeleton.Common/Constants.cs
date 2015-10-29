@@ -14,11 +14,12 @@ namespace AngularSkeleton.Common
     {
         public class Api
         {
-            public class Version
+            public class V1
             {
-                public const string RestV1CatalogRoutePrefix = RestV1RoutePrefix + "/catalog";
-                public const string RestV1ManageRoutePrefix = RestV1RoutePrefix + "/manage";
-                public const string RestV1RoutePrefix = "api/rest/v1";
+                public const string AccessTokenRoute = "/" + RoutePrefix + "/accesstoken"; // oauth requires leading slash
+                public const string CatalogRoutePrefix = RoutePrefix + "/catalog";
+                public const string ManageRoutePrefix = RoutePrefix + "/manage";
+                public const string RoutePrefix = "api/rest/v1";
             }
         }
 

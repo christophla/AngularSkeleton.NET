@@ -22,7 +22,7 @@ namespace AngularSkeleton.DataAccess.Migrations
         {
             // Create users
 
-            context.TryAddUser(Configuration.DefaultUserUsername, Configuration.DefaultEmail, "User", "Account", false, Configuration.DefaultPassword);
+            context.TryAddUser(Configuration.DefaultUserUsername, "nomail@nowhere.com", "User", "Account", false, Configuration.DefaultPassword);
             context.TryAddUser(Configuration.DefaultAdminUsername, Configuration.DefaultEmail, "Admin", "Account", true, Configuration.DefaultPassword);
 
             // Create 500 products

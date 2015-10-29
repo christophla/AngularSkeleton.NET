@@ -123,7 +123,6 @@ namespace AngularSkeleton.Service.Impl
             return Mapper.Map<User, UserModel>(user);
         }
 
-        [PrincipalPermission(SecurityAction.Demand, Role = Constants.Permissions.User)]
         public async Task<ProductModel> GetProductAsync(long productId)
         {
             var product = await _repositories.Products.FindAsync(productId);
@@ -175,7 +174,7 @@ namespace AngularSkeleton.Service.Impl
         {
             // user can update themselves
 
-            if (!Principal.Current.IsAdministrator || Principal.Current.UserId != userId)
+            if (Principal.Current.UserId != userId && !Principal.Current.IsAdministrator)
             {
                 throw new SecurityException("You are not authorized to update this user.");
             }

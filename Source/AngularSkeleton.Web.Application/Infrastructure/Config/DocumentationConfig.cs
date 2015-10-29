@@ -13,28 +13,31 @@ namespace AngularSkeleton.Web.Application.Infrastructure.Config
         /// <summary>
         ///     Registers the configuration.
         /// </summary>
-        /// <param name="config"></param>
+        /// <param name="config">The http configuration</param>
         public static void Register(HttpConfiguration config)
         {
             config
                 .EnableSwagger(c =>
                 {
-                    // core assembly comments
+                    // assembly comments
+
                     var baseDirectory = AppDomain.CurrentDomain.BaseDirectory + "\\Bin";
                     c.IncludeXmlComments(Path.Combine(baseDirectory, "AngularSkeleton.Web.Application.xml"));
                     c.IncludeXmlComments(Path.Combine(baseDirectory, "AngularSkeleton.Service.Model.xml"));
 
-                    // models assembly comments
+                    // information
 
                     c.SingleApiVersion("v1", "AngularSkeleton.NET")
-                        .Description("Angular skeleton application API")
-                        .TermsOfService("Some terms")
+                        .Description("AngularSkeleton application API")
+                        .TermsOfService("MIT License")
                         .Contact(cc => cc
                             .Name("Christopher Town")
                             .Url("https://github.com/christophla/AngularSkeleton.NET"))
                         .License(lc => lc
                             .Name("License")
                             .Url("https://github.com/christophla/AngularSkeleton.NET/blob/master/LICENSE"));
+
+                    // authorization
 
                     c
                         .OAuth2("oauth2")

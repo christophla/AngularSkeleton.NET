@@ -82,7 +82,7 @@ namespace AngularSkeleton.Domain.Security
         public static ClaimsIdentity CreateIdentity(string authenticationType, string username, long userId = 0, bool isAdministrator = false)
         {
             Condition.Requires(authenticationType, "authenticationType").IsNotNullOrWhiteSpace();
-            Condition.Requires(username, "username").IsNotNullOrWhiteSpace().IsLongerOrEqual(8);
+            Condition.Requires(username, "username").IsNotNullOrWhiteSpace().IsLongerOrEqual(1);
 
             var claims = new List<Claim>
             {

@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Compile" ToolsVersion="4.0">
+
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="Tools\Compression\MSBuild.Packer.Targets" />
+  
+  <UsingTask TaskName="MSBuild.Community.Tasks.AssemblyInfo" AssemblyFile="Tools\CommunityTasks\MSBuild.Community.Tasks.dll" />
+  <UsingTask TaskName="MSBuild.Community.Tasks.XmlUpdate" AssemblyFile="Tools\CommunityTasks\MSBuild.Community.Tasks.dll" />
+  <UsingTask TaskName="MSBuild.Community.Tasks.Xslt" AssemblyFile="Tools\CommunityTasks\MSBuild.Community.Tasks.dll" />
+  <UsingTask TaskName="MSBuild.Community.Tasks.Zip" AssemblyFile="Tools\CommunityTasks\MSBuild.Community.Tasks.dll" />
+  <UsingTask TaskName="CssCompressorTask" AssemblyFile="Tools\Compression\Yahoo.Yui.Compressor.Build.MsBuild.dll" />
+  <UsingTask TaskName="JavaScriptCompressorTask" AssemblyFile="Tools\Compression\Yahoo.Yui.Compressor.Build.MsBuild.dll" />
+  <UsingTask TaskName="NUnit" AssemblyFile="Tools\CommunityTasks\MSBuild.Community.Tasks.dll" />
+  <UsingTask TaskName="SqlDropDatabase" AssemblyFile="Tools\SqlMsBuildTasks\SqlMsBuildTasks.dll" />
+  <UsingTask TaskName="XUnit.Runner.MSBuild.xunit" AssemblyFile="Tools\XUnit\xunit.runner.msbuild.dll" />
+
+  <PropertyGroup>
+
+    <!-- Assembly Stamping -->
+    <BuildNumber Condition=" '$(BuildNumber)' == '' ">0</BuildNumber>
+    <RevisionNumber Condition=" '$(RevisionNumber)' == '' ">0</RevisionNumber>
+    <AssemblyVersion Condition=" '$(AssemblyVersion)' == ''">1.0.0.0</AssemblyVersion>
+    <AssemblyFileVersion>1.0.$(BuildNumber).$(RevisionNumber)</AssemblyFileVersion>
+    <AssemblyInformationalVersion>1.0.$(BuildNumber).$(RevisionNumber)</AssemblyInformationalVersion>
+    <BuildConfiguration Condition=" '$(BuildConfiguration)' == '' ">Release</BuildConfiguration>
+
+    <!-- Solution Files -->
+    <SolutionFileName>$(ProjectDir)Source\AngularSkeleton.sln</SolutionFileName>
+    <StrongNameKey>$(ProjectDir)Source\AngularSkeleton.snk</StrongNameKey>
+
+    <!-- Artifact Package Directories -->
+    <ArtifactRoot>$(ProjectDir)Build\Artifacts</ArtifactRoot>
+    <DatabaseRoot>$(ProjectDir)Database</DatabaseRoot>
+    <StaticOutputFolder>$(ProjectDir)Build\StaticOutput</StaticOutputFolder>
+    <ImporterOutputFolder>$(ProjectDir)Build\ImporterOutput</ImporterOutputFolder>
+    <PackageOutputFolder>$(ProjectDir)Build\PackageOutput</PackageOutputFolder>
+    <TestsOutputFolder>$(ProjectDir)Build\TestsOutput</TestsOutputFolder>
+    <WebOutputFolder>$(ProjectDir)Build\WebOutput</WebOutputFolder>
+    <WebApplicationOutputFolder>$(WebOutputFolder)\Application</WebApplicationOutputFolder>
+
+    <!-- App Settings -->
+    <ApplicationUrl>$(ApplicationUrl)</ApplicationUrl>
+
+    <!-- Web Publish Paths -->
+    <ReleaseArtifactsPath>$(ProjectDir)Release</ReleaseArtifactsPath>
+    <ReleaseDatabasePath>$(ReleaseArtifactsPath)\Database</ReleaseDatabasePath>
+    <ReleaseWebApplicationPath>$(WebApplicationOutputFolder)\_PublishedWebSites\AngularSkeleton.Web.Application\</ReleaseWebApplicationPath>
+
+    <!-- Web Deployment Share -->
+    <WebDeployTempDriveLetter Condition="'$(WebDeployTempDriveLetter)' == ''">T</WebDeployTempDriveLetter>
+    <WebDeployNetworkShare>$(WebDeployNetworkShare)</WebDeployNetworkShare>
+    <WebDeployPath>$(WebDeployPath)</WebDeployPath>
+
+    <!-- Database -->
+    <DatabaseRoot>$(ProjectDir)Database</DatabaseRoot>
+    <DatabaseTimeout Condition="'$(DatabaseTimeout)' == ''">1800000</DatabaseTimeout>
+    <DatabaseServer Condition="'$(DatabaseServer)' == ''">CPT-SERVER</DatabaseServer>
+    <DatabaseName Condition="'$(DatabaseName)' == ''">AIDO_ENVOICE_BUILD</DatabaseName>
+    <DatabaseUsername Condition="'$(DatabaseUsername)' == ''">bamboobuild</DatabaseUsername>
+    <DatabasePassword Condition="'$(DatabasePassword)' == ''">p@ssw0rd</DatabasePassword>
+
+    <!-- NuGet -->
+    <NuGetExecutable>$(ProjectDir)Tools\NuGet\NuGet.exe</NuGetExecutable>
+    
+    <!-- Client cdn -->
+    <DisableCdnClient>false</DisableCdnClient>
+    
+    <!-- XUnit to NUnit transformation -->
+    <XUnitTransformationXsl>$(ProjectDir)Tools\XUnit\nunitxml.xslt</XUnitTransformationXsl>
+    
+  </PropertyGroup>
+
+  <Target Name="Clean">
+
+    <Message Text="**********************************************" />
+    <Message Text="Cleaning Solution" />
+    <Message Text="**********************************************" />
+
+    <MSBuild Projects="$(SolutionFileName)" Properties="Configuration=$(BuildConfiguration)" Targets="Clean" />
+    <ItemGroup>
+      <BinFiles Include="bin\*.*" />
+    </ItemGroup>
+    <Delete Files="@(BinFiles)" />
+
+    <RemoveDir Directories="$(ArtifactRoot)" ContinueOnError="true" />
+    <RemoveDir Directories="$(TestsOutputFolder)" ContinueOnError="true" />
+    <RemoveDir Directories="$(WebApplicationOutputFolder)" ContinueOnError="true" />
+    <RemoveDir Directories="$(WebMarketingOutputFolder)" ContinueOnError="true" />
+  </Target>
+
+  <Target Name="StampVersionInfo">
+
+    <Message Text="**********************************************" />
+    <Message Text="Stamping Assemblies with Version $(AssemblyVersion), FileVersion $(AssemblyFileVersion)" />
+    <Message Text="**********************************************" />
+
+    <AssemblyInfo CodeLanguage="CS" OutputFile="$(ProjectDir)Source\Aido.Envoice.Common\Properties\VersionInfo.cs" AssemblyVersion="$(AssemblyVersion)" AssemblyFileVersion="$(AssemblyFileVersion)" AssemblyInformationalVersion="$(AssemblyInformationalVersion)" />
+    <AssemblyInfo CodeLanguage="CS" OutputFile="$(ProjectDir)Source\Aido.Envoice.Domain\Properties\VersionInfo.cs" AssemblyVersion="$(AssemblyVersion)" AssemblyFileVersion="$(AssemblyFileVersion)" AssemblyInformationalVersion="$(AssemblyInformationalVersion)" />
+    <AssemblyInfo CodeLanguage="CS" OutputFile="$(ProjectDir)Source\Aido.Envoice.Web.Application\Properties\VersionInfo.cs" AssemblyVersion="$(AssemblyVersion)" AssemblyFileVersion="$(AssemblyFileVersion)" AssemblyInformationalVersion="$(AssemblyInformationalVersion)" />
+    <AssemblyInfo CodeLanguage="CS" OutputFile="$(ProjectDir)Source\Aido.Envoice.Web.Common\Properties\VersionInfo.cs" AssemblyVersion="$(AssemblyVersion)" AssemblyFileVersion="$(AssemblyFileVersion)" AssemblyInformationalVersion="$(AssemblyInformationalVersion)" />
+    <AssemblyInfo CodeLanguage="CS" OutputFile="$(ProjectDir)Source\Aido.Envoice.Web.Marketing\Properties\VersionInfo.cs" AssemblyVersion="$(AssemblyVersion)" AssemblyFileVersion="$(AssemblyFileVersion)" AssemblyInformationalVersion="$(AssemblyInformationalVersion)" />
+
+  </Target>
+
+  <Target Name="NugetRestorePackages">
+
+    <Message Text="**********************************************" />
+    <Message Text="Restoring Nuget Packages" />
+    <Message Text="**********************************************" />
+
+    <Exec Command="$(NuGetExecutable) restore $(SolutionFileName)" WorkingDirectory="$(ProjectDir)Tools\NuGet\" />
+  
+  </Target>
+  
+  <Target Name="Compile" DependsOnTargets="Clean;StampVersionInfo;NugetRestorePackages;">
+
+    <Message Text="**********************************************" />
+    <Message Text="Compile" />
+    <Message Text="**********************************************" />
+
+    <Message Text="Building Application" />
+    <MSBuild Projects="$(SolutionFileName)" Properties="Configuration=$(BuildConfiguration)" />
+  </Target>
+
+  <Target Name="MigrateDatabase">
+
+    <Message Text="****************************************************" />
+    <Message Text="Dropping Database $(DatabaseName) (if exists)" />
+    <Message Text="****************************************************" />
+
+    <SqlDropDatabase ConnectionString="Data Source=$(DatabaseServer);User Id=$(DatabaseUsername);Password=$(DatabasePassword);"
+                     Database="$(DatabaseName)" />
+    
+    <Message Text="****************************************************" />
+    <Message Text="Migrating Database $(DatabaseName)" />
+    <Message Text="****************************************************" />
+
+    <PropertyGroup>
+      <MigrateExecutable>$(ProjectDir)\Source\Packages\EntityFramework.6.1.0\tools\migrate.exe</MigrateExecutable>
+      <MigrateStartupDirectory>$(ProjectDir)\Source\Aido.Envoice.Web.Application\bin</MigrateStartupDirectory>
+      <MigrateStartupConfigurationFile>$(ProjectDir)\Source\Aido.Envoice.Web.Application\Web.config</MigrateStartupConfigurationFile>
+    </PropertyGroup>
+
+    <Message Text="Using $(MigrateStartupConfigurationFile)" />
+    <Message Text="Using Data Source=$(DatabaseServer);User Id=$(DatabaseUsername);Password=$(DatabasePassword);Initial Catalog=$(DatabaseName);Connection Timeout=30;MultipleActiveResultSets=True;" />
+    
+    <XmlUpdate
+       Namespace="http://schemas.microsoft.com/.NetConfiguration/v2.0"
+       XmlFileName="$(MigrateStartupConfigurationFile)"
+       Xpath="//connectionStrings/add[@name='AIDO_ENVOICE']/@connectionString"
+       Value="Data Source=$(DatabaseServer);User Id=$(DatabaseUsername);Password=$(DatabasePassword);Initial Catalog=$(DatabaseName);Connection Timeout=30;MultipleActiveResultSets=True;"
+       />
+
+    <Exec Command="$(MigrateExecutable) Aido.Envoice.Domain.dll /StartUpDirectory:$(MigrateStartupDirectory) /startupConfigurationFile:$(MigrateStartupConfigurationFile) /verbose" Timeout="$(DatabaseTimeout)" />
+
+  </Target>
+  
+  <Target Name="Test" DependsOnTargets="MigrateDatabase">
+
+    <Message Text="**********************************************" />
+    <Message Text="Running Unit Tests" />
+    <Message Text="**********************************************" />
+
+    <MakeDir Directories="$(TestsOutputFolder)" ContinueOnError="true" />
+
+    <!-- DOMAIN TESTS -->
+
+    <XmlUpdate
+      Namespace="http://schemas.microsoft.com/.NetConfiguration/v2.0"
+      XmlFileName="$(ProjectDir)\Source\Aido.Envoice.Domain.Tests\bin\$(BuildConfiguration)\Aido.Envoice.Domain.Tests.dll.config"
+      Xpath="//connectionStrings/add[@name='AIDO_ENVOICE']/@connectionString"
+      Value="Data Source=$(DatabaseServer);User Id=$(DatabaseUsername);Password=$(DatabasePassword);Initial Catalog=$(DatabaseName);Connection Timeout=30;MultipleActiveResultSets=True;"
+      />
+
+    <CreateItem Include="$(ProjectDir)\Source\Aido.Envoice.Domain.Tests\bin\$(BuildConfiguration)\Aido.Envoice.Domain.Tests.dll">
+      <Output TaskParameter="Include" ItemName="DomainTestAssemblies" />
+    </CreateItem>
+    
+    <xunit Assemblies="@(DomainTestAssemblies)" Xml="$(TestsOutputFolder)\xunit-domain-result.xml" />
+    
+    <!-- WEB APPLICATION TESTS -->
+
+    <XmlUpdate
+      Namespace="http://schemas.microsoft.com/.NetConfiguration/v2.0"
+      XmlFileName="$(ProjectDir)\Source\Aido.Envoice.Web.Application.Tests\bin\$(BuildConfiguration)\Aido.Envoice.Web.Application.Tests.dll.config"
+      Xpath="//connectionStrings/add[@name='AIDO_ENVOICE']/@connectionString"
+      Value="Data Source=$(DatabaseServer);User Id=$(DatabaseUsername);Password=$(DatabasePassword);Initial Catalog=$(DatabaseName);Connection Timeout=30;MultipleActiveResultSets=True;"
+      />
+
+    <CreateItem Include="$(ProjectDir)\Source\Aido.Envoice.Web.Application.Tests\bin\$(BuildConfiguration)\Aido.Envoice.Web.Application.Tests.dll">
+      <Output TaskParameter="Include" ItemName="WebApplicationTestAssemblies" />
+    </CreateItem>
+
+    <xunit Assemblies="@(WebApplicationTestAssemblies)" Xml="$(TestsOutputFolder)\xunit-web-application-result.xml" />
+
+    <!-- TRANSFORM FOR NUNIT-->
+
+    <MSBuild.Community.Tasks.Xslt Xsl="$(XUnitTransformationXsl)" Inputs="$(TestsOutputFolder)\xunit-domain-result.xml" Output="$(TestsOutputFolder)\nunit-domain-result.xml"/>
+    <MSBuild.Community.Tasks.Xslt Xsl="$(XUnitTransformationXsl)" Inputs="$(TestsOutputFolder)\xunit-web-application-result.xml" Output="$(TestsOutputFolder)\nunit-web-application-result.xml"/>
+
+  </Target>
+
+  <Target Name="BuildWebOutput">
+    <RemoveDir Directories="$(ReleaseWebApplicationPath)" ContinueOnError="true" />
+    <RemoveDir Directories="$(ReleaseWebMarketingPath)" ContinueOnError="true" />
+    <CallTarget Targets="BuildWebApplicationOutput" />
+    <CallTarget Targets="BuildWebMarketingOutput" />
+    <!--CallTarget Targets="BuildStaticOutput" /-->
+    <CallTarget Targets="UpdateAppSettings" />
+  </Target>
+  
+  <Target Name="BuildWebApplicationOutput">
+
+    <Message Text="****************************************************" />
+    <Message Text="Publishing Web Application to $(WebApplicationOutputFolder)" />
+    <Message Text="****************************************************" />
+
+    <MSBuild Projects="Source\Aido.Envoice.Web.Application\Aido.Envoice.Web.Application.csproj"
+             Targets="ResolveReferences;_CopyWebApplication;_BuiltWebOutputGroupOutput"
+             Properties="OutDir=$(WebApplicationOutputFolder)\;Configuration=$(BuildConfiguration)"  />
+    
+  </Target>
+
+  <Target Name="BuildWebMarketingOutput">
+
+    <Message Text="****************************************************" />
+    <Message Text="Publishing Web Marketing Application to $(WebMarketingOutputFolder)" />
+    <Message Text="****************************************************" />
+
+    <MSBuild Projects="Source\Aido.Envoice.Web.Marketing\Aido.Envoice.Web.Marketing.csproj"
+             Targets="ResolveReferences;_CopyWebApplication;_BuiltWebOutputGroupOutput"
+             Properties="OutDir=$(WebMarketingOutputFolder)\;Configuration=$(BuildConfiguration)" />
+
+  </Target>
+
+  <Target Name="BuildStaticOutput">
+
+    <Message Text="****************************************************" />
+    <Message Text="Building Static Output" />
+    <Message Text="****************************************************" />
+
+    <RemoveDir Directories="$(StaticOutputFolder)" ContinueOnError="true" />
+    <MakeDir Directories="$(StaticOutputFolder)" />
+    <MakeDir Directories="$(StaticOutputFolder)\Client" />
+    <MakeDir Directories="$(StaticOutputFolder)\Content" />
+    
+    <Message Text="****************************************************" />
+    <Message Text="Minify Client Javascript and Css" />
+    <Message Text="****************************************************" />
+
+    <ItemGroup>
+      <AppScriptFiles Include="$(ReleaseWebApplicationPath)\Client\**\*.js" Exclude="$(ReleaseWebApplicationPath)\Client\Vendor\**\*.*;$(ReleaseWebApplicationPath)\Client\Loader.js" />
+    </ItemGroup>
+
+    <ReadLinesFromFile File="%(AppScriptFiles.Identity)">
+      <Output TaskParameter="Lines" ItemName="lines"/>
+    </ReadLinesFromFile>
+
+    <WriteLinesToFile File="$(StaticOutputFolder)\Client\Application.uncompressed.js" Lines="@(Lines)" Overwrite="true" />
+
+    <JavaScriptCompressorTask
+          SourceFiles="$(StaticOutputFolder)\Client\Application.uncompressed.js"
+          DeleteSourceFiles="true"
+          OutputFile="$(StaticOutputFolder)\Client\Application.js"
+          CompressionType="Standard"
+          ObfuscateJavaScript="True"
+          PreserveAllSemicolons="False"
+          DisableOptimizations="No"
+          EncodingType="Default"
+          LineBreakPosition="-1"
+          LoggingType="Info"
+          ThreadCulture="en-au"
+          IsEvalIgnored="false"
+          />
+
+    <Message Text="****************************************************" />
+    <Message Text="Writing client version information" />
+    <Message Text="****************************************************" />
+
+    <WriteLinesToFile 
+      File="$(StaticOutputFolder)\Client\Version.txt" 
+      Lines="$(AssemblyFileVersion)" 
+      Overwrite="true" />
+    
+    <Message Text="****************************************************" />
+    <Message Text="Migrating to production script loader" />
+    <Message Text="****************************************************" />
+
+    <Copy SourceFiles="$(ReleaseWebApplicationPath)\Client\Loader\Production.js"
+          DestinationFiles="$(StaticOutputFolder)\Client\Loader.js" />
+
+    <Message Text="****************************************************" />
+    <Message Text="Copying vendor minified javascript" />
+    <Message Text="****************************************************" />
+
+    <ItemGroup>
+      <VendorFiles Include="$(ReleaseWebApplicationPath)\Client\Vendor\**\*.min.js" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(VendorFiles)" DestinationFolder="$(StaticOutputFolder)\Client\Vendor\%(RecursiveDir)" />
+
+    <Message Text="****************************************************" />
+    <Message Text="Copying module templates" />
+    <Message Text="****************************************************" />
+
+    <ItemGroup>
+      <ModuleTemplateFiles Include="$(ReleaseWebApplicationPath)\Client\Modules\**\*.tpl.html" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(ModuleTemplateFiles)" DestinationFolder="$(StaticOutputFolder)\Client\Modules\%(RecursiveDir)" />
+    
+    <Message Text="****************************************************" />
+    <Message Text="Applying client output to web app" />
+    <Message Text="****************************************************" />
+
+    <ItemGroup>
+      <ClientToDelete Include="$(ReleaseWebApplicationPath)\Client" />
+    </ItemGroup>
+    <RemoveDir Directories="@(ClientToDelete)" />
+
+    <Message Text="****************************************************" />
+    <Message Text="Copying content" />
+    <Message Text="****************************************************" />
+
+    <ItemGroup>
+      <ContentFiles Include="$(ReleaseWebApplicationPath)\Content\**\*.*" Exclude="$(ReleaseWebApplicationPath)\Content\Web.config" />
+      <ContentToDelete Include="$(ReleaseWebApplicationPath)\Client" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(ContentFiles)" DestinationFolder="$(StaticOutputFolder)\Content\%(RecursiveDir)" />
+    <RemoveDir Directories="@(ContentToDelete)" />
+    
+    <!-- DISABLE CDN -->
+      
+    <ItemGroup>
+      <ClientToCopy Include="$(StaticOutputFolder)\**\*.*" />
+    </ItemGroup>
+
+    <Copy Condition="$(DisableCdnClient)" SourceFiles="@(ClientToCopy)" DestinationFolder="$(ReleaseWebApplicationPath)\Client\%(RecursiveDir)" />
+    
+  </Target>
+
+  <Target Name="UpdateAppSettings">
+
+    <Message Text="****************************************************" />
+    <Message Text="Updating web app settings" />
+    <Message Text="****************************************************" />
+
+    <!-- Remove Debug -->
+
+    <XmlUpdate
+      XmlFileName="$(ReleaseWebApplicationPath)\Web.config"
+      XPath="//configuration/system.web/compilation/@debug"
+      Value="false" />
+
+    <XmlUpdate 
+      XmlFileName="$(ReleaseWebMarketingPath)\Web.config"
+      XPath="//configuration/system.web/compilation/@debug"
+      Value="false" />
+    
+  </Target>
+
+  <Target Name="Package">
+
+    <Message Text="" />
+    <Message Text="" />
+    <Message Text="****************************************************" />
+    <Message Text="Packaging Artifacts" />
+    <Message Text="****************************************************" />
+    <Message Text="" />
+
+    <RemoveDir Directories="$(ArtifactRoot)" ContinueOnError="true" />
+    <MakeDir Directories="$(ArtifactRoot)" />
+
+    <RemoveDir Directories="$(PackageOutputFolder)" ContinueOnError="true" />
+    <MakeDir Directories="$(PackageOutputFolder)" />
+    <MakeDir Directories="$(PackageOutputFolder)\Database" />
+    <MakeDir Directories="$(PackageOutputFolder)\Documentation" />
+    <MakeDir Directories="$(PackageOutputFolder)\Tools" />
+    <MakeDir Directories="$(PackageOutputFolder)\Web" />
+    <MakeDir Directories="$(PackageOutputFolder)\Web\Application" />
+    <MakeDir Directories="$(PackageOutputFolder)\Web\Static" />
+    <MakeDir Directories="$(PackageOutputFolder)\Web\Marketing" />
+
+    <!-- README -->
+
+    <ItemGroup>
+      <ReadmeFile Include="$(ProjectDir)\README.txt" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(ReadmeFile)" DestinationFolder="$(PackageOutputFolder)\%(RecursiveDir)" />
+
+    <!-- DEPLOYMENT FILES -->
+
+    <ItemGroup>
+      <DeploymentFiles Include="$(ProjectDir)\Deployment\**\*.*" />
+    </ItemGroup>
+
+    <Copy SourceFiles="@(DeploymentFiles)" DestinationFolder="$(PackageOutputFolder)\%(RecursiveDir)" />
+
+    <!-- DEPLOYMENT TOOLS -->
+
+    <Copy
+      SourceFiles="$(ProjectDir)\Source\Packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll"
+      DestinationFolder="$(PackageOutputFolder)\Tools" />
+
+    <Copy
+     SourceFiles="$(ProjectDir)\Source\Packages\EntityFramework.6.1.0\tools\migrate.exe"
+     DestinationFolder="$(PackageOutputFolder)\Tools" />
+
+    <Copy
+      SourceFiles="$(ProjectDir)\Tools\SqlMsBuildTasks\\SqlMsBuildTasks.dll"
+      DestinationFolder="$(PackageOutputFolder)\Tools" />
+
+    <Copy
+      SourceFiles="$(ProjectDir)\Tools\CommunityTasks\MSBuild.Community.Tasks.dll"
+      DestinationFolder="$(PackageOutputFolder)\Tools" />
+    
+    <!-- DATABASE SCRIPTS -->
+
+    <Message Text="Gathering database scripts from $(DatabaseRoot)\**\*.*" />
+
+    <Copy 
+      SourceFiles="$(WebApplicationOutputFolder)\_PublishedWebSites\Aido.Envoice.Web.Application\bin\Aido.Envoice.Domain.dll"
+      DestinationFolder="$(PackageOutputFolder)\Database\"/>
+
+    <!-- WEB APPLICATION -->
+
+    <Message Text="Gathering web application files" />
+    <ItemGroup>
+      <WebApplicationFiles Include="$(WebApplicationOutputFolder)\_PublishedWebSites\Aido.Envoice.Web.Application\**\*.*"
+                           Exclude="$(WebApplicationOutputFolder)\_PublishedWebSites\Aido.Envoice.Web.Application\**\.svn\**"/>
+    </ItemGroup>
+    <Copy SourceFiles="@(WebApplicationFiles)" DestinationFolder="$(PackageOutputFolder)\Web\Application\%(RecursiveDir)" />
+
+    <!-- WEB STATIC -->
+
+    <Message Text="Gathering web static files" />
+    <ItemGroup>
+      <WebClientFiles Include="$(StaticOutputFolder)\**\*.*"/>
+    </ItemGroup>
+
+    <Copy
+      SourceFiles="@(WebClientFiles)"
+      DestinationFolder="$(PackageOutputFolder)\Web\Static\%(RecursiveDir)"/>
+
+    <!-- WEB MARKETING -->
+
+    <Message Text="Gathering web application files" />
+    <ItemGroup>
+      <WebMarketingFiles Include="$(WebMarketingOutputFolder)\_PublishedWebSites\Aido.Envoice.Web.Marketing\**\*.*"
+                           Exclude="$(WebMarketingOutputFolder)\_PublishedWebSites\Aido.Envoice.Web.Marketing\**\.svn\**"/>
+    </ItemGroup>
+    <Copy SourceFiles="@(WebMarketingFiles)" DestinationFolder="$(PackageOutputFolder)\Web\Marketing\%(RecursiveDir)" />
+
+    <!-- PACKAGE ZIP -->
+
+    <Message Text="Packaging files from $(PackageOutputFolder)\**\*.*" />
+    <ItemGroup>
+      <PackageFiles Include="$(PackageOutputFolder)\**\*.*" />
+    </ItemGroup>
+
+    <Zip ZipFileName="$(ArtifactRoot)\Archive\AIDO-Envoice-$(AssemblyFileVersion).zip"
+         WorkingDirectory="$(PackageOutputFolder)"
+         Files="@(PackageFiles)"
+         ZipLevel="9" />
+
+    <!-- RAW OUTPUT -->
+    
+    <Copy SourceFiles="@(PackageFiles)" DestinationFolder="$(ArtifactRoot)\Output\%(RecursiveDir)" />
+    
+  </Target>
+
+</Project>

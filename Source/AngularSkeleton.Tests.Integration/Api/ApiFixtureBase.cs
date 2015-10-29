@@ -29,9 +29,9 @@ namespace AngularSkeleton.Tests.Integration.Api
     [Trait("Category", TestCategory.Integration)]
     public abstract class ApiFixtureBase : IDisposable
     {
-        protected static string CatalogSearchUrl = string.Format("http://localhost/{0}/search", Constants.Api.Version.RestV1CatalogRoutePrefix);
-        protected static string ProductsUrl = string.Format("http://localhost/{0}/products", Constants.Api.Version.RestV1ManageRoutePrefix);
-        protected static string UsersUrl = string.Format("http://localhost/{0}/users", Constants.Api.Version.RestV1ManageRoutePrefix);
+        protected static string CatalogSearchUrl = string.Format("http://localhost/{0}/search", Constants.Api.V1.CatalogRoutePrefix);
+        protected static string ProductsUrl = string.Format("http://localhost/{0}/products", Constants.Api.V1.ManageRoutePrefix);
+        protected static string UsersUrl = string.Format("http://localhost/{0}/users", Constants.Api.V1.ManageRoutePrefix);
 
         private string _token;
 
@@ -96,7 +96,7 @@ namespace AngularSkeleton.Tests.Integration.Api
             };
 
             var tokenPostData = new FormUrlEncodedContent(tokenDetails);
-            var tokenResult = server.HttpClient.PostAsync(string.Format("/{0}/accesstoken", Constants.Api.Version.RestV1RoutePrefix), tokenPostData).Result;
+            var tokenResult = server.HttpClient.PostAsync(string.Format("/{0}/accesstoken", Constants.Api.V1.RoutePrefix), tokenPostData).Result;
             tokenResult.StatusCode.ShouldBe(HttpStatusCode.OK);
 
             var body = JObject.Parse(tokenResult.Content.ReadAsStringAsync().Result);

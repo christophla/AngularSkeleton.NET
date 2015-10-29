@@ -8,7 +8,6 @@
 // THE SOFTWARE.
 //=============================================================================
 
-using System;
 using System.Web.Http;
 using AngularSkeleton.Common;
 using AngularSkeleton.Service;
@@ -46,7 +45,7 @@ namespace AngularSkeleton.Web.Application.Infrastructure.Config
             builder.RegisterHttpRequestMessage(configuration);
 
             // authorization
-            builder.RegisterType<AuthorizationServerProvider>().As<IOAuthAuthorizationServerProvider>().InstancePerLifetimeScope();
+            builder.RegisterType<AuthorizationServerProvider>().As<IOAuthAuthorizationServerProvider>().SingleInstance();
 
             // set resolver
             var container = builder.Build();
@@ -78,10 +77,10 @@ namespace AngularSkeleton.Web.Application.Infrastructure.Config
         {
             var serverOptions = new OAuthAuthorizationServerOptions
             {
-                AccessTokenExpireTimeSpan = TimeSpan.FromDays(1),
+                AccessTokenExpireTimeSpan = Configuration.AccessToken.ExpireTimeSpan,
                 AllowInsecureHttp = true,
                 Provider = container.Resolve<IOAuthAuthorizationServerProvider>(),
-                TokenEndpointPath = new PathString(string.Format("/{0}/accesstoken", Constants.Api.Version.RestV1RoutePrefix)) // absolute for oauth
+                TokenEndpointPath = new PathString(Constants.Api.V1.AccessTokenRoute) // absolute for oauth
             };
 
             // Token Generation

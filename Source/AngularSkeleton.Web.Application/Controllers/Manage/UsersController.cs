@@ -27,7 +27,7 @@ namespace AngularSkeleton.Web.Application.Controllers.Manage
     /// <summary>
     ///     Controller for accessing users
     /// </summary>
-    [RoutePrefix(Constants.Api.Version.RestV1ManageRoutePrefix)]
+    [RoutePrefix(Constants.Api.V1.ManageRoutePrefix)]
     public class UsersController : ControllerBase
     {
         private const string RetrieveUserRoute = "GetUserById";
@@ -152,7 +152,7 @@ namespace AngularSkeleton.Web.Application.Controllers.Manage
         [Route("users/{id:long}/reset-password")]
         [AcceptVerbs("DELETE")]
         [PrincipalPermission(SecurityAction.Demand, Role = Constants.Permissions.Administrator)]
-        public async Task<HttpResponseMessage> ResetPassword(long id)
+        public async Task<HttpResponseMessage> ResetPasswordAsync(long id)
         {
             await Services.Security.ResetPasswordAsync(id);
             return Request.CreateResponse(HttpStatusCode.OK);
@@ -173,7 +173,7 @@ namespace AngularSkeleton.Web.Application.Controllers.Manage
         [Route("users/{id:long}/toggle")]
         [AcceptVerbs("POST")]
         [PrincipalPermission(SecurityAction.Demand, Role = Constants.Permissions.Administrator)]
-        public async Task<HttpResponseMessage> Toggle(long id)
+        public async Task<HttpResponseMessage> ToggleAsync(long id)
         {
             await Services.Management.ToggleUserAsync(id);
             return Request.CreateResponse(HttpStatusCode.OK);

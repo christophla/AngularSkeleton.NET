@@ -17,6 +17,7 @@ var m = angular.module('app', [
     'app.constants',
     'common.analytics',
     'common.filters',
+    'common.forms',
     'common.security',
     'app.repositories',
     'app.services',

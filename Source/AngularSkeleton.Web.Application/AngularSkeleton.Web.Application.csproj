@@ -253,6 +253,7 @@
     <Compile Include="Infrastructure\Attributes\CheckModelForNullAttribute.cs" />
     <Compile Include="Infrastructure\Attributes\ExceptionHandling.cs" />
     <Compile Include="Infrastructure\Attributes\ValidateModelAttribute.cs" />
+    <Compile Include="Infrastructure\Configuration.cs" />
     <Compile Include="Infrastructure\Config\ApiRouteConfig.cs" />
     <Compile Include="Infrastructure\Config\ContainerConfig.cs" />
     <Compile Include="Infrastructure\Config\DocumentationConfig.cs" />

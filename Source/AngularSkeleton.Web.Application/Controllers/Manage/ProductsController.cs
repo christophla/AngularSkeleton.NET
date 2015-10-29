@@ -27,7 +27,7 @@ namespace AngularSkeleton.Web.Application.Controllers.Manage
     /// <summary>
     ///     Controller for accessing <see cref="ProductModel" /> instances
     /// </summary>
-    [RoutePrefix(Constants.Api.Version.RestV1ManageRoutePrefix)]
+    [RoutePrefix(Constants.Api.V1.ManageRoutePrefix)]
     public class ProductsController : ControllerBase
     {
         private const string RetrieveProductRoute = "GetProductById";
@@ -135,7 +135,7 @@ namespace AngularSkeleton.Web.Application.Controllers.Manage
         [Route("products/{id:long}/toggle")]
         [AcceptVerbs("POST")]
         [PrincipalPermission(SecurityAction.Demand, Role = Constants.Permissions.Administrator)]
-        public async Task<HttpResponseMessage> Toggle(long id)
+        public async Task<HttpResponseMessage> ToggleAsync(long id)
         {
             await Services.Management.ToggleProductAsync(id);
             return Request.CreateResponse(HttpStatusCode.OK);
