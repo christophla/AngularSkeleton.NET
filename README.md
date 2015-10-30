@@ -5,8 +5,8 @@ single page Angular application with a RESTful Web API backend.
 
 ## Motivation
 
-The motiviation is to provide a full stack starting point for rapidly building a 
-single page application leveraging the .NET stack.
+The motiviation is to provide a starting point for rapidly building a full-stack
+single page application leveraging .NET and Entity Framework.
 
 ## Installation
 
