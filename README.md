@@ -1,8 +1,3 @@
-## Synopsis
-
-The AngularSkeleton.NET project provides a starting template for building a 
-single page Angular application with a RESTful Web API backend.
-
 ## Motivation
 
 The motiviation is to provide a starting point for rapidly building a full-stack
