@@ -24,9 +24,4 @@ The API documentation is embedded within the application using the Swashbuckle S
 Integration tests are provided in the AngularSkeleton.Tests.Integration library. The require the
 xunit.visualstudio integration library which is loaded automatically via NuGet.
 
-## Future Features
-
-SignalR integration, role-based security trimming via Angular directives, multi-tenant support 
-for SaaS, advanced security scenarios (multi-dimensional, hierarchical, acyclic directed graph), 
-rules engines, Azure/AWS integrations, vNext, or anything else I can think of!
 
